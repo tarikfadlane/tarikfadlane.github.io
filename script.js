@@ -88,42 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Contact Form Submission (Mock) ---
-    const contactForm = document.getElementById('contact-form');
-    const formStatus = document.getElementById('form-status');
 
-    if(contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Basic validation check (html5 required handles most)
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalBtnHtml = submitBtn.innerHTML;
-            
-            // Loading state
-            submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin mr-2"></i> Envoi en cours...';
-            submitBtn.disabled = true;
-            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
-
-            // Mock API call simulation
-            setTimeout(() => {
-                submitBtn.innerHTML = originalBtnHtml;
-                submitBtn.disabled = false;
-                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
-                
-                formStatus.innerHTML = '<i class="fa-solid fa-check-circle mr-1"></i> Message envoyé avec succès ! Je vous répondrai bientôt.';
-                formStatus.className = "text-sm text-center mt-4 font-medium text-emerald-500 block animate-[fadeIn_0.3s_ease_forwards]";
-                
-                contactForm.reset();
-
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    formStatus.classList.add('hidden');
-                    formStatus.classList.remove('block');
-                }, 5000);
-            }, 1500);
-        });
-    }
 
     // --- Scroll Reveal Animations ---
     const revealElements = document.querySelectorAll('.fade-in-up');
