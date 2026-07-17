@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Digital Developer</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#3b82f6', // blue-500
+                        secondary: '#8b5cf6', // violet-500
+                        dark: {
+                            bg: '#0f172a', // slate-900
+                            card: '#1e293b', // slate-800
+                            border: '#334155' // slate-700
+                        },
+                        light: {
+                            bg: '#f8fafc', // slate-50
+                            card: '#ffffff',
+                            border: '#e2e8f0'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome for precise SVG icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <style type="text/tailwindcss">
+        /* Custom Styles and Utility Classes */
+        @layer utilities {
+            .glass-nav {
+                @apply bg-white/70 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50 shadow-sm;
+            }
+        }
+
+        html {
+            scroll-padding-top: 5rem;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            @apply bg-slate-100 dark:bg-slate-900;
+        }
+        ::-webkit-scrollbar-thumb {
+            @apply bg-slate-300 dark:bg-slate-600 rounded-full hover:bg-slate-400 dark:hover:bg-slate-500 transition-colors;
+        }
+
+        /* Base interactive elements */
+        .nav-link {
+            @apply text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors relative after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full;
+        }
+
+        .mobile-link {
+            @apply text-2xl font-bold text-slate-800 dark:text-slate-100 hover:text-primary dark:hover:text-primary transition-colors block py-2;
+        }
+
+        .social-icon {
+            @apply text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-all hover:scale-110 flex items-center justify-center;
+        }
+
+        .social-icon-large {
+            @apply text-3xl text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-all hover:-translate-y-1.5 hover:shadow-lg rounded-full flex items-center justify-center;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            @apply bg-primary hover:bg-blue-600 text-white font-semibold rounded-xl shadow-lg shadow-primary/30 transition-all hover:shadow-primary/50 hover:-translate-y-0.5 active:translate-y-0;
+        }
+
+        .btn-secondary {
+            @apply bg-white dark:bg-dark-card hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-900 dark:text-white font-semibold rounded-xl border border-slate-200 dark:border-dark-border shadow-sm transition-all hover:-translate-y-0.5 active:translate-y-0;
+        }
+
+        .filter-btn {
+            @apply px-6 py-2 rounded-full text-sm font-semibold transition-all border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-primary hover:text-primary dark:hover:text-primary;
+        }
+
+        .filter-btn.active {
+            @apply bg-primary text-white border-primary shadow-md shadow-primary/20;
+        }
+
+        /* Badges */
+        .skill-badge {
+            @apply px-3.5 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-full border border-slate-200 dark:border-slate-700 transition-colors hover:bg-slate-200 dark:hover:bg-slate-700 cursor-default;
+        }
+
+        .tech-badge {
+            @apply px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-md;
+        }
+
+        /* Connections Block */
+        .connect-link {
+            @apply flex items-center gap-5 p-4 rounded-2xl border border-transparent hover:border-slate-200 dark:hover:border-slate-700 hover:bg-white dark:hover:bg-dark-card transition-all cursor-pointer hover:shadow-sm;
+        }
+
+        /* Animations */
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll reveal utility classes */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* SVG Procedural Animations */
+        @keyframes dash-draw {
+            to { stroke-dashoffset: 0; }
+        }
+        
+        @keyframes slow-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.8; filter: brightness(1); }
+            50% { opacity: 1; filter: brightness(1.3); }
+        }
+
+        .animate-dash {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: dash-draw 3s ease-out forwards;
+        }
+
+        .group:hover .animate-spin-slow {
+            animation: slow-spin 10s linear infinite;
+            transform-origin: center;
+        }
+
+        .group:hover .animate-pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-light-bg dark:bg-dark-bg text-slate-900 dark:text-slate-100 transition-colors duration-300 antialiased selection:bg-primary selection:text-white font-sans">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#home" class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">DevPortfolio</a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link">Accueil</a>
+                    <a href="#about" class="nav-link">À propos</a>
+                    <a href="#projects" class="nav-link">Projets</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    
+                    <div class="flex items-center space-x-4 border-l border-slate-300 dark:border-slate-700 pl-4">
+                        <a href="https://github.com/yourusername" target="_blank" class="social-icon" aria-label="GitHub"><i class="fa-brands fa-github text-xl"></i></a>
+                        <a href="https://linkedin.com/in/yourusername" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                        <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Dark Mode">
+                            <i class="fa-solid fa-moon dark:hidden text-slate-700"></i>
+                            <i class="fa-solid fa-sun hidden dark:block text-slate-300"></i>
+                        </button>
+                        <a href="#" class="px-4 py-2 rounded-lg border border-primary/50 text-primary hover:bg-primary hover:text-white transition-all duration-300 font-semibold text-sm flex items-center gap-2 hover:-translate-y-0.5 shadow-sm hover:shadow-primary/20 bg-primary/5 dark:bg-primary/10 backdrop-blur-sm">
+                            <span>Resume</span>
+                            <i class="fa-solid fa-download text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center space-x-4">
+                    <button id="theme-toggle-mobile" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Dark Mode">
+                        <i class="fa-solid fa-moon dark:hidden text-slate-700"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-slate-300"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-slate-700 dark:text-slate-300 hover:text-primary transition-colors focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="fixed inset-0 bg-light-bg dark:bg-dark-bg z-40 transform translate-x-full transition-transform duration-300 md:hidden pt-20 px-6">
+            <div class="flex flex-col space-y-6 mt-8">
+                <a href="#home" class="mobile-link">Accueil</a>
+                <a href="#about" class="mobile-link">À propos</a>
+                <a href="#projects" class="mobile-link">Projets</a>
+                <a href="#contact" class="mobile-link">Contact</a>
+                
+                <div class="pt-6 border-t border-slate-300 dark:border-slate-700 flex flex-col space-y-4">
+                    <div class="flex space-x-6 justify-center">
+                        <a href="https://github.com/yourusername" target="_blank" class="social-icon"><i class="fa-brands fa-github text-3xl"></i></a>
+                        <a href="https://linkedin.com/in/yourusername" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin text-3xl"></i></a>
+                    </div>
+                    <a href="#" class="w-full py-3 rounded-xl border border-primary/50 text-primary hover:bg-primary hover:text-white transition-all duration-300 font-bold text-center flex justify-center items-center gap-2 mt-4 hover:-translate-y-0.5 shadow-sm hover:shadow-primary/20 bg-primary/5 dark:bg-primary/10">
+                        <span>Télécharger le CV</span>
+                        <i class="fa-solid fa-download"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <!-- Background Decor -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-50 animate-blob"></div>
+        <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10 fade-in-up">
+            <p class="text-primary font-semibold tracking-wider uppercase mb-4 text-sm md:text-base">Bienvenue sur mon portfolio</p>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+                Salut, je suis <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Tarik Fadlane</span>
+                <br>
+                <span class="text-3xl md:text-5xl text-slate-700 dark:text-slate-300 mt-3 block font-bold">Développeur Digital & Programmeur</span>
+            </h1>
+            <p class="mt-6 text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+                Passionné par le développement d'applications web modernes, la conception de bases de données robustes et l'optimisation d'environnements open-source.
+            </p>
+            
+            <!-- Quick Socials -->
+            <div class="flex items-center justify-center space-x-6 mb-12">
+                <a href="https://github.com/yourusername" target="_blank" class="social-icon-large" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank" class="social-icon-large" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:your.email@example.com" class="social-icon-large" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mt-4">
+                <a href="#projects" class="relative group px-8 py-4 bg-gradient-to-r from-blue-600 to-violet-600 text-white font-bold rounded-full overflow-hidden shadow-lg shadow-blue-500/30 transition-all duration-300 hover:scale-105 hover:shadow-blue-500/50 w-full sm:w-auto text-center text-lg">
+                    <span class="relative z-10 flex items-center justify-center gap-2">
+                        Voir mon travail <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                    <div class="absolute inset-0 h-full w-full bg-gradient-to-r from-violet-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </a>
+                <a href="#contact" class="relative group px-8 py-4 bg-transparent text-slate-800 dark:text-white font-bold rounded-full overflow-hidden border-2 border-slate-300 dark:border-slate-700 transition-all duration-300 hover:scale-105 hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/20 w-full sm:w-auto text-center text-lg">
+                    <span class="relative z-10 flex items-center justify-center gap-2">
+                        Contactons-nous <i class="fa-solid fa-paper-plane group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                    <div class="absolute inset-0 h-full w-full bg-blue-50 dark:bg-slate-800/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 section-heading fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">À propos de moi</h2>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in-up">
+                    <h3 class="text-2xl font-bold mb-6 text-slate-800 dark:text-slate-100">Mon engagement dans le développement digital</h3>
+                    <div class="space-y-4 text-slate-600 dark:text-slate-400 text-lg leading-relaxed font-light">
+                        <p>
+                            Étudiant passionné en développement digital, je me concentre sur la création d'architectures propres et de solutions logicielles performantes. Mon parcours diversifié m'a apporté une grande rigueur scientifique et une forte capacité de résolution de problèmes.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="fade-in-up" style="transition-delay: 200ms;">
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <!-- Frontend Skills -->
+                        <div class="skill-card p-6 rounded-2xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm hover:shadow-lg transition-shadow duration-300">
+                            <h4 class="text-lg font-bold mb-4 flex items-center gap-3 text-slate-800 dark:text-slate-100"><i class="fa-solid fa-code text-primary"></i> Frontend</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-badge">HTML/CSS</span>
+                                <span class="skill-badge">JavaScript</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Backend & DBs -->
+                        <div class="skill-card p-6 rounded-2xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm hover:shadow-lg transition-shadow duration-300">
+                            <h4 class="text-lg font-bold mb-4 flex items-center gap-3 text-slate-800 dark:text-slate-100"><i class="fa-solid fa-server text-secondary"></i> Backend & Databases</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-badge">PHP</span>
+                                <span class="skill-badge">Python</span>
+                                <span class="skill-badge">MySQL</span>
+                            </div>
+                        </div>
+
+                        <!-- Tools & Systems -->
+                        <div class="skill-card p-6 rounded-2xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm hover:shadow-lg transition-shadow duration-300">
+                            <h4 class="text-lg font-bold mb-4 flex items-center gap-3 text-slate-800 dark:text-slate-100"><i class="fa-solid fa-screwdriver-wrench text-emerald-500"></i> Tools & Systems</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-badge">Git & GitHub</span>
+                                <span class="skill-badge">VS Code</span>
+                                <span class="skill-badge">Linux</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Soft Skills -->
+                        <div class="skill-card p-6 rounded-2xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm hover:shadow-lg transition-shadow duration-300">
+                            <h4 class="text-lg font-bold mb-4 flex items-center gap-3 text-slate-800 dark:text-slate-100"><i class="fa-solid fa-users text-amber-500"></i> Compétences Humaines</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-badge">Travail d'équipe</span>
+                                <span class="skill-badge">Leadership & Gestion d'équipe</span>
+                                <span class="skill-badge">Résolution de problèmes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 section-heading fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Projets Phares</h2>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full mb-10"></div>
+                
+                <!-- Filters -->
+                <div class="flex flex-wrap justify-center gap-3 mb-12">
+                    <button class="filter-btn active" data-filter="all">Tout</button>
+                    <button class="filter-btn" data-filter="frontend">Frontend</button>
+                    <button class="filter-btn" data-filter="backend">Backend</button>
+                    <button class="filter-btn" data-filter="fullstack">Fullstack</button>
+                    <button class="filter-btn" data-filter="data">Données</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                
+                <!-- Project Card 1 -->
+                <div class="project-card group fade-in-up" data-category="fullstack">
+                    <div class="relative overflow-hidden rounded-t-2xl aspect-video bg-slate-100 dark:bg-slate-900">
+                        <div class="project-visual w-full h-full flex items-center justify-center transition-transform duration-700 ease-in-out group-hover:scale-105"></div>
+                        <div class="absolute inset-0 bg-slate-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-5 backdrop-blur-sm">
+                            <a href="https://github.com/yourusername" target="_blank" class="w-12 h-12 flex items-center justify-center bg-white text-slate-900 rounded-full hover:bg-primary hover:text-white transition-all transform hover:scale-110 shadow-lg" title="View Code">
+                                <i class="fa-brands fa-github text-2xl"></i>
+                            </a>
+                            <a href="#" target="_blank" class="w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full hover:bg-blue-600 transition-all transform hover:scale-110 shadow-lg" title="Live Demo">
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-dark-card border border-t-0 border-slate-200 dark:border-dark-border rounded-b-2xl shadow-sm group-hover:shadow-xl transition-shadow duration-300">
+                        <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-slate-100">Plateforme E-Commerce Moderne</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-5 line-clamp-2 leading-relaxed">Une solution e-commerce full-stack avec paiements Stripe intégrés, authentification utilisateur JWT, et un tableau de bord d'inventaire en temps réel.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="tech-badge">Next.js</span>
+                            <span class="tech-badge">Node.js</span>
+                            <span class="tech-badge">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="project-card group fade-in-up" data-category="frontend" style="transition-delay: 100ms;">
+                    <div class="relative overflow-hidden rounded-t-2xl aspect-video bg-slate-100 dark:bg-slate-900">
+                        <div class="project-visual w-full h-full flex items-center justify-center transition-transform duration-700 ease-in-out group-hover:scale-105"></div>
+                        <div class="absolute inset-0 bg-slate-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-5 backdrop-blur-sm">
+                            <a href="https://github.com/yourusername" target="_blank" class="w-12 h-12 flex items-center justify-center bg-white text-slate-900 rounded-full hover:bg-primary hover:text-white transition-all transform hover:scale-110 shadow-lg" title="View Code">
+                                <i class="fa-brands fa-github text-2xl"></i>
+                            </a>
+                            <a href="#" target="_blank" class="w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full hover:bg-blue-600 transition-all transform hover:scale-110 shadow-lg" title="Live Demo">
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-dark-card border border-t-0 border-slate-200 dark:border-dark-border rounded-b-2xl shadow-sm group-hover:shadow-xl transition-shadow duration-300">
+                        <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-slate-100">Tableau de bord de gestion de tâches</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-5 line-clamp-2 leading-relaxed">Une interface utilisateur de gestion de tâches hautement interactive et réactive comprenant un glisser-déposer Kanban, un mode sombre et un filtrage d'état avancé.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="tech-badge">React</span>
+                            <span class="tech-badge">Tailwind CSS</span>
+                            <span class="tech-badge">Redux</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="project-card group fade-in-up" data-category="backend" style="transition-delay: 200ms;">
+                    <div class="relative overflow-hidden rounded-t-2xl aspect-video bg-slate-100 dark:bg-slate-900">
+                        <div class="project-visual w-full h-full flex items-center justify-center transition-transform duration-700 ease-in-out group-hover:scale-105"></div>
+                        <div class="absolute inset-0 bg-slate-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-5 backdrop-blur-sm">
+                            <a href="https://github.com/yourusername" target="_blank" class="w-12 h-12 flex items-center justify-center bg-white text-slate-900 rounded-full hover:bg-primary hover:text-white transition-all transform hover:scale-110 shadow-lg" title="View Code">
+                                <i class="fa-brands fa-github text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-dark-card border border-t-0 border-slate-200 dark:border-dark-border rounded-b-2xl shadow-sm group-hover:shadow-xl transition-shadow duration-300">
+                        <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-slate-100">API Haute Performance</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-5 line-clamp-2 leading-relaxed">Un backend de microservices évolutif traitant des milliers de requêtes simultanées, utilisant le cache Redis et une optimisation avancée des requêtes.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">FastAPI</span>
+                            <span class="tech-badge">Redis</span>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Project Card 4 -->
+                <div class="project-card group fade-in-up" data-category="frontend">
+                    <div class="relative overflow-hidden rounded-t-2xl aspect-video bg-slate-100 dark:bg-slate-900">
+                        <div class="project-visual w-full h-full flex items-center justify-center transition-transform duration-700 ease-in-out group-hover:scale-105"></div>
+                        <div class="absolute inset-0 bg-slate-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-5 backdrop-blur-sm">
+                            <a href="https://github.com/yourusername" target="_blank" class="w-12 h-12 flex items-center justify-center bg-white text-slate-900 rounded-full hover:bg-primary hover:text-white transition-all transform hover:scale-110 shadow-lg" title="View Code">
+                                <i class="fa-brands fa-github text-2xl"></i>
+                            </a>
+                            <a href="#" target="_blank" class="w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full hover:bg-blue-600 transition-all transform hover:scale-110 shadow-lg" title="Live Demo">
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-dark-card border border-t-0 border-slate-200 dark:border-dark-border rounded-b-2xl shadow-sm group-hover:shadow-xl transition-shadow duration-300">
+                        <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-slate-100">Application Météo en Temps Réel</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-5 line-clamp-2 leading-relaxed">Une application frontend élégante récupérant des données météorologiques en temps réel et utilisant de superbes animations dynamiques basées sur les conditions météorologiques actuelles.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="tech-badge">Vanilla JS</span>
+                            <span class="tech-badge">CSS Animations</span>
+                            <span class="tech-badge">Weather API</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project Card 5 -->
+                <div class="project-card group fade-in-up" data-category="fullstack" style="transition-delay: 100ms;">
+                    <div class="relative overflow-hidden rounded-t-2xl aspect-video bg-slate-100 dark:bg-slate-900">
+                        <div class="project-visual w-full h-full flex items-center justify-center transition-transform duration-700 ease-in-out group-hover:scale-105"></div>
+                        <div class="absolute inset-0 bg-slate-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-5 backdrop-blur-sm">
+                            <a href="https://github.com/yourusername" target="_blank" class="w-12 h-12 flex items-center justify-center bg-white text-slate-900 rounded-full hover:bg-primary hover:text-white transition-all transform hover:scale-110 shadow-lg" title="View Code">
+                                <i class="fa-brands fa-github text-2xl"></i>
+                            </a>
+                            <a href="#" target="_blank" class="w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full hover:bg-blue-600 transition-all transform hover:scale-110 shadow-lg" title="Live Demo">
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-dark-card border border-t-0 border-slate-200 dark:border-dark-border rounded-b-2xl shadow-sm group-hover:shadow-xl transition-shadow duration-300">
+                        <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-slate-100">Clone de Réseau Social</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-5 line-clamp-2 leading-relaxed">Une application full-stack proposant une messagerie en temps réel via WebSockets, la création de posts, des commentaires et un flux multimédia réactif.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="tech-badge">Vue.js</span>
+                            <span class="tech-badge">Express</span>
+                            <span class="tech-badge">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 6 -->
+                <div class="project-card group fade-in-up" data-category="data" style="transition-delay: 200ms;">
+                    <div class="relative overflow-hidden rounded-t-2xl aspect-video bg-slate-100 dark:bg-slate-900">
+                        <div class="project-visual w-full h-full flex items-center justify-center transition-transform duration-700 ease-in-out group-hover:scale-105"></div>
+                        <div class="absolute inset-0 bg-slate-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-5 backdrop-blur-sm">
+                            <a href="https://github.com/yourusername" target="_blank" class="w-12 h-12 flex items-center justify-center bg-white text-slate-900 rounded-full hover:bg-primary hover:text-white transition-all transform hover:scale-110 shadow-lg" title="View Code">
+                                <i class="fa-brands fa-github text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-dark-card border border-t-0 border-slate-200 dark:border-dark-border rounded-b-2xl shadow-sm group-hover:shadow-xl transition-shadow duration-300">
+                        <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-slate-100">Pipeline de Données Automatisé</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-5 line-clamp-2 leading-relaxed">Un pipeline backend automatisé pour le scraping, le nettoyage et le stockage sécurisé d'ensembles de données massifs dans des solutions de stockage cloud.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Docker</span>
+                            <span class="tech-badge">AWS S3</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Timeline Section -->
+    <section id="journey" class="py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/50">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 section-heading fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Mon Parcours</h2>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+                <p class="mt-5 text-slate-600 dark:text-slate-400 text-lg">Formation académique et étapes professionnelles.</p>
+            </div>
+
+            <div class="relative border-l-2 border-primary/30 ml-4 md:ml-6 fade-in-up">
+                
+                <!-- Timeline Item 1 -->
+                <div class="mb-12 relative pl-8 md:pl-10 group">
+                    <div class="absolute w-5 h-5 bg-primary rounded-full -left-2.5 top-1.5 border-4 border-slate-50 dark:border-slate-900 group-hover:scale-125 transition-transform"></div>
+                    
+                    <div class="flex flex-col md:flex-row md:items-start gap-2 md:gap-8">
+                        <div class="md:w-1/4 shrink-0">
+                            <span class="text-primary font-bold text-xl block">Présent</span>
+                            <span class="text-sm text-slate-500 font-medium">2025 - Présent</span>
+                        </div>
+                        <div class="md:w-3/4 bg-white dark:bg-dark-card p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-dark-border group-hover:shadow-lg transition-shadow mt-4 md:mt-0">
+                            <h3 class="text-xl md:text-2xl font-bold mb-1 text-slate-800 dark:text-white">Développement Digital</h3>
+                            <h4 class="text-secondary dark:text-secondary mb-4 font-semibold">OFPPT</h4>
+                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed font-light">Formation approfondie en développement logiciel, architecture web, bases de données et méthodologies agiles.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="mb-12 relative pl-8 md:pl-10 group">
+                    <div class="absolute w-5 h-5 bg-primary rounded-full -left-2.5 top-1.5 border-4 border-slate-50 dark:border-slate-900 group-hover:scale-125 transition-transform"></div>
+                    
+                    <div class="flex flex-col md:flex-row md:items-start gap-2 md:gap-8">
+                        <div class="md:w-1/4 shrink-0">
+                            <span class="text-primary font-bold text-xl block">2025</span>
+                            <span class="text-sm text-slate-500 font-medium">2023 - 2025</span>
+                        </div>
+                        <div class="md:w-3/4 bg-white dark:bg-dark-card p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-dark-border group-hover:shadow-lg transition-shadow mt-4 md:mt-0">
+                            <h3 class="text-xl md:text-2xl font-bold mb-1 text-slate-800 dark:text-white">DEUG en Bio-Analyses Médicales</h3>
+                            <h4 class="text-secondary dark:text-secondary mb-4 font-semibold">Faculté des Sciences Ain Chock</h4>
+                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed font-light">Parcours scientifique universitaire axé sur la rigueur, l'analyse de données et la méthodologie scientifique.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="mb-0 relative pl-8 md:pl-10 group">
+                    <div class="absolute w-5 h-5 bg-primary rounded-full -left-2.5 top-1.5 border-4 border-slate-50 dark:border-slate-900 group-hover:scale-125 transition-transform"></div>
+                    
+                    <div class="flex flex-col md:flex-row md:items-start gap-2 md:gap-8">
+                        <div class="md:w-1/4 shrink-0">
+                            <span class="text-primary font-bold text-xl block">2023</span>
+                            <span class="text-sm text-slate-500 font-medium">2023</span>
+                        </div>
+                        <div class="md:w-3/4 bg-white dark:bg-dark-card p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-dark-border group-hover:shadow-lg transition-shadow mt-4 md:mt-0">
+                            <h3 class="text-xl md:text-2xl font-bold mb-1 text-slate-800 dark:text-white">Baccalauréat Sciences Physiques</h3>
+                            <h4 class="text-secondary dark:text-secondary mb-4 font-semibold">Lycée Mohamed VI</h4>
+                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed font-light">Obtention avec Mention Bien.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 section-heading fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Contactez-moi</h2>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+                <p class="mt-5 text-slate-600 dark:text-slate-400 text-lg">Vous avez un projet en tête ou souhaitez discuter ? Écrivons-nous.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-0 bg-white dark:bg-dark-card rounded-3xl shadow-xl overflow-hidden border border-slate-200 dark:border-dark-border fade-in-up">
+                
+                <!-- Contact Form -->
+                <div class="lg:col-span-3 p-8 md:p-12">
+                    <h3 class="text-2xl font-bold mb-8 text-slate-800 dark:text-white">Envoyez-moi un message</h3>
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="form-group">
+                                <label for="name" class="block text-sm font-semibold mb-2 text-slate-700 dark:text-slate-300">Nom Complet</label>
+                                <input type="text" id="name" required class="w-full px-5 py-3.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900/50 focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder-slate-400" placeholder="Jean Dupont">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="block text-sm font-semibold mb-2 text-slate-700 dark:text-slate-300">Adresse Email</label>
+                                <input type="email" id="email" required class="w-full px-5 py-3.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900/50 focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder-slate-400" placeholder="jean@example.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject" class="block text-sm font-semibold mb-2 text-slate-700 dark:text-slate-300">Sujet</label>
+                            <input type="text" id="subject" required class="w-full px-5 py-3.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900/50 focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder-slate-400" placeholder="Demande de projet">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="block text-sm font-semibold mb-2 text-slate-700 dark:text-slate-300">Message</label>
+                            <textarea id="message" rows="5" required class="w-full px-5 py-3.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900/50 focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all resize-none placeholder-slate-400" placeholder="Bonjour, j'aimerais vous parler de..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full py-4 text-lg flex justify-center items-center gap-3 group mt-4">
+                            <span>Envoyer le Message</span>
+                            <i class="fa-solid fa-paper-plane group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                        </button>
+                        <p id="form-status" class="hidden text-sm text-center mt-4 font-medium"></p>
+                    </form>
+                </div>
+
+                <!-- Connect Block -->
+                <div class="lg:col-span-2 bg-slate-50 dark:bg-slate-900/80 p-8 md:p-12 border-t lg:border-t-0 lg:border-l border-slate-200 dark:border-dark-border flex flex-col justify-center">
+                    <h3 class="text-2xl font-bold mb-6 text-slate-800 dark:text-white">Connectons-nous</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mb-10 leading-relaxed font-light">
+                        Je suis toujours ouvert pour discuter de conception de produits, de nouveaux projets passionnants ou d'opportunités de partenariat. N'hésitez pas à me contacter via l'une de ces plateformes.
+                    </p>
+                    
+                    <div class="space-y-5">
+                        <a href="https://github.com/yourusername" target="_blank" class="connect-link group">
+                            <div class="w-14 h-14 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center shadow-sm group-hover:bg-slate-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-slate-900 transition-colors">
+                                <i class="fa-brands fa-github text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-lg">GitHub</h4>
+                                <p class="text-sm text-slate-500">@yourusername</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://linkedin.com/in/yourusername" target="_blank" class="connect-link group">
+                            <div class="w-14 h-14 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center shadow-sm group-hover:bg-[#0A66C2] group-hover:text-white transition-colors">
+                                <i class="fa-brands fa-linkedin-in text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-lg">LinkedIn</h4>
+                                <p class="text-sm text-slate-500">in/yourusername</p>
+                            </div>
+                        </a>
+                        
+                        <a href="mailto:your.email@example.com" class="connect-link group">
+                            <div class="w-14 h-14 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center shadow-sm group-hover:bg-primary group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-envelope text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-lg">Email</h4>
+                                <p class="text-sm text-slate-500">your.email@example.com</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 text-center border-t border-slate-200 dark:border-dark-border bg-white dark:bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-center items-center space-x-8 mb-6 md:hidden">
+                <a href="https://github.com/yourusername" target="_blank" class="text-slate-500 hover:text-primary transition-colors"><i class="fa-brands fa-github text-2xl"></i></a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank" class="text-slate-500 hover:text-primary transition-colors"><i class="fa-brands fa-linkedin text-2xl"></i></a>
+                <a href="mailto:your.email@example.com" class="text-slate-500 hover:text-primary transition-colors"><i class="fa-solid fa-envelope text-2xl"></i></a>
+            </div>
+            <p class="text-slate-600 dark:text-slate-400 font-medium">
+                &copy; <span id="current-year"></span> Tarik Fadlane. Tous droits réservés.
+            </p>
+            <p class="text-slate-400 dark:text-slate-500 text-sm mt-3 font-light">
+                Conçu & Développé avec <i class="fa-solid fa-heart text-red-500 mx-1"></i> en utilisant HTML, Tailwind CSS et Vanilla JS.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
