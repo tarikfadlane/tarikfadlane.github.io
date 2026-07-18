@@ -374,219 +374,210 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[350px] grid-flow-dense" id="projects-grid">
                 
                 <!-- Project Card 1: E-commerce -->
-                <div class="project-card group fade-in-up" data-category="fullstack">
-                    <div class="relative overflow-hidden rounded-t-2xl aspect-video bg-slate-100 dark:bg-slate-900">
-                        <div class="project-visual w-full h-full flex items-center justify-center transition-transform duration-700 ease-in-out group-hover:scale-105 bg-gradient-to-br from-indigo-500 to-purple-600">
-                            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="opacity-80 group-hover:opacity-100 transition-opacity">
-                                <path d="M50 20L85 40L50 60L15 40L50 20Z" stroke="white" stroke-width="1.5" stroke-linejoin="round" fill="white" fill-opacity="0.05"/>
-                                <path d="M50 40L85 60L50 80L15 60L50 40Z" stroke="white" stroke-width="1.5" stroke-opacity="0.5" stroke-linejoin="round" fill="white" fill-opacity="0.05"/>
-                                <path d="M50 60L85 80L50 100L15 80L50 60Z" stroke="white" stroke-width="1.5" stroke-dasharray="4 4" stroke-opacity="0.5" stroke-linejoin="round" fill="white" fill-opacity="0.05"/>
-                                <line x1="15" y1="40" x2="15" y2="80" stroke="white" stroke-width="1.5" stroke-dasharray="4 4" stroke-opacity="0.3"/>
-                                <line x1="85" y1="40" x2="85" y2="80" stroke="white" stroke-width="1.5" stroke-dasharray="4 4" stroke-opacity="0.3"/>
-                                <line x1="50" y1="60" x2="50" y2="100" stroke="white" stroke-width="1.5" stroke-dasharray="4 4" stroke-opacity="0.3"/>
-                            </svg>
-                        </div>
-                        <div class="absolute inset-0 bg-slate-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-5 backdrop-blur-sm">
-                            <a href="https://github.com/tarikfadlane/website_e-commerce" target="_blank" class="w-12 h-12 flex items-center justify-center bg-white text-slate-900 rounded-full hover:bg-primary hover:text-white transition-all transform hover:scale-110 shadow-lg" title="View Code">
-                                <i class="fa-brands fa-github text-2xl"></i>
-                            </a>
-                        </div>
+                <div class="project-card group fade-in-up relative overflow-hidden rounded-[2rem] bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-primary/50 md:col-span-2 lg:col-span-2" data-category="fullstack">
+                    <div class="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none">
+                        <div class="absolute -top-20 -left-20 w-72 h-72 bg-indigo-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[80px] animate-blob"></div>
+                        <div class="absolute -bottom-20 -right-20 w-72 h-72 bg-purple-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[80px] animate-blob animation-delay-2000"></div>
                     </div>
-                    <div class="p-6 bg-white dark:bg-dark-card border border-t-0 border-slate-200 dark:border-dark-border rounded-b-2xl shadow-sm group-hover:shadow-xl transition-shadow duration-300 flex flex-col h-[220px]">
-                        <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-slate-100">Boutique E-commerce</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-5 line-clamp-3 leading-relaxed">Un projet e-commerce complet incluant un panier d'achat fonctionnel, un chatbot interactif pour l'assistance client, et les fonctionnalités principales d'une boutique en ligne.</p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="tech-badge">HTML/CSS</span>
-                            <span class="tech-badge">JavaScript</span>
+                    
+                    <div class="relative z-10 p-8 flex flex-col md:flex-row h-full gap-8 items-center">
+                        <!-- Left: Content -->
+                        <div class="flex flex-col h-full w-full md:w-1/2">
+                            <div class="flex justify-between items-start mb-auto">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">HTML/CSS</span>
+                                    <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">JavaScript</span>
+                                </div>
+                                <a href="https://github.com/tarikfadlane/website_e-commerce" target="_blank" class="w-12 h-12 flex items-center justify-center bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white rounded-full hover:bg-primary hover:text-white transition-all transform hover:scale-110 shadow-lg backdrop-blur-md border border-white/20 dark:border-white/5" title="View Code">
+                                    <i class="fa-brands fa-github text-xl"></i>
+                                </a>
+                            </div>
+                            
+                            <div class="mt-8 relative">
+                                <h3 class="text-2xl md:text-3xl font-bold mb-3 text-slate-800 dark:text-white">Boutique E-commerce</h3>
+                                <p class="text-slate-600 dark:text-slate-300 text-sm md:text-base line-clamp-3 leading-relaxed">Un projet e-commerce complet incluant un panier d'achat fonctionnel, un chatbot interactif pour l'assistance client, et les fonctionnalités principales d'une boutique en ligne.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Right: Floating Icon -->
+                        <div class="w-full md:w-1/2 relative h-48 md:h-full flex items-center justify-center mt-6 md:mt-0">
+                            <div class="w-32 h-32 md:w-40 md:h-40 rounded-3xl shadow-2xl border border-white/40 dark:border-white/10 bg-white/40 dark:bg-slate-800/40 backdrop-blur-md flex items-center justify-center rotate-3 group-hover:rotate-0 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500">
+                                <i class="fa-solid fa-cart-shopping text-6xl md:text-7xl text-indigo-600 dark:text-indigo-400 drop-shadow-md group-hover:drop-shadow-xl transition-all"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project Card 2: Gestabsence -->
-                <div class="project-card group fade-in-up" data-category="backend" style="transition-delay: 100ms;">
-                    <div class="relative overflow-hidden rounded-t-2xl aspect-video bg-slate-100 dark:bg-slate-900">
-                        <div class="project-visual w-full h-full flex items-center justify-center transition-transform duration-700 ease-in-out group-hover:scale-105 bg-gradient-to-br from-emerald-400 to-teal-600">
-                            <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="opacity-80 group-hover:opacity-100 transition-opacity">
-                                <circle cx="60" cy="60" r="40" stroke="white" stroke-width="1" stroke-dasharray="4 4" stroke-opacity="0.2"/>
-                                <line x1="60" y1="20" x2="100" y2="60" stroke="white" stroke-width="1" stroke-opacity="0.3"/>
-                                <line x1="100" y1="60" x2="60" y2="100" stroke="white" stroke-width="1" stroke-opacity="0.3"/>
-                                <line x1="60" y1="100" x2="20" y2="60" stroke="white" stroke-width="1" stroke-opacity="0.3"/>
-                                <line x1="20" y1="60" x2="60" y2="20" stroke="white" stroke-width="1" stroke-opacity="0.3"/>
-                                <line x1="60" y1="20" x2="60" y2="100" stroke="white" stroke-width="1" stroke-opacity="0.3"/>
-                                <line x1="20" y1="60" x2="100" y2="60" stroke="white" stroke-width="1" stroke-opacity="0.3"/>
-                                <circle cx="60" cy="60" r="4" fill="white"/>
-                                <circle cx="60" cy="20" r="6" fill="#a78bfa"/>
-                                <circle cx="100" cy="60" r="6" fill="#a78bfa"/>
-                                <circle cx="60" cy="100" r="6" fill="#a78bfa"/>
-                                <circle cx="20" cy="60" r="6" fill="#a78bfa"/>
-                            </svg>
-                        </div>
-                        <div class="absolute inset-0 bg-slate-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-5 backdrop-blur-sm">
-                            <a href="https://github.com/tarikfadlane/gestabsence" target="_blank" class="w-12 h-12 flex items-center justify-center bg-white text-slate-900 rounded-full hover:bg-primary hover:text-white transition-all transform hover:scale-110 shadow-lg" title="View Code">
-                                <i class="fa-brands fa-github text-2xl"></i>
+                <div class="project-card group fade-in-up relative overflow-hidden rounded-[2rem] bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-emerald-500/50 lg:row-span-2" data-category="backend" style="transition-delay: 100ms;">
+                    <div class="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none">
+                        <div class="absolute top-1/4 -right-10 w-60 h-60 bg-emerald-400/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[60px] animate-blob"></div>
+                        <div class="absolute bottom-1/4 -left-10 w-60 h-60 bg-teal-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[60px] animate-blob animation-delay-2000"></div>
+                    </div>
+                    
+                    <div class="relative z-10 p-8 flex flex-col h-full">
+                        <div class="flex justify-between items-start">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">Python</span>
+                                <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">OpenCV</span>
+                            </div>
+                            <a href="https://github.com/tarikfadlane/gestabsence" target="_blank" class="w-12 h-12 flex items-center justify-center bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white rounded-full hover:bg-emerald-500 hover:text-white transition-all transform hover:scale-110 shadow-lg backdrop-blur-md border border-white/20 dark:border-white/5" title="View Code">
+                                <i class="fa-brands fa-github text-xl"></i>
                             </a>
                         </div>
-                    </div>
-                    <div class="p-6 bg-white dark:bg-dark-card border border-t-0 border-slate-200 dark:border-dark-border rounded-b-2xl shadow-sm group-hover:shadow-xl transition-shadow duration-300 flex flex-col h-[220px]">
-                        <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-slate-100">Système de Présence</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-5 line-clamp-3 leading-relaxed">Application de reconnaissance faciale en temps réel utilisant OpenCV et l'algorithme LBPH pour suivre automatiquement la présence des étudiants.</p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">OpenCV</span>
+                        
+                        <!-- Top/Middle: Floating Icon -->
+                        <div class="relative w-full flex-1 flex items-center justify-center my-8">
+                            <div class="w-32 h-32 md:w-40 md:h-40 rounded-3xl shadow-2xl border border-white/40 dark:border-white/10 bg-white/40 dark:bg-slate-800/40 backdrop-blur-md flex items-center justify-center -rotate-3 group-hover:rotate-0 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500">
+                                <i class="fa-solid fa-user-check text-6xl md:text-7xl text-emerald-600 dark:text-emerald-400 drop-shadow-md group-hover:drop-shadow-xl transition-all"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-auto">
+                            <h3 class="text-2xl font-bold mb-3 text-slate-800 dark:text-white">Système de Présence</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm line-clamp-3 md:line-clamp-6 leading-relaxed">Application de reconnaissance faciale en temps réel utilisant OpenCV et l'algorithme LBPH pour suivre automatiquement la présence des étudiants.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project Card 3: Filecleaner -->
-                <div class="project-card group fade-in-up" data-category="backend" style="transition-delay: 200ms;">
-                    <div class="relative overflow-hidden rounded-t-2xl aspect-video bg-slate-100 dark:bg-slate-900">
-                        <div class="project-visual w-full h-full flex items-center justify-center transition-transform duration-700 ease-in-out group-hover:scale-105 bg-gradient-to-br from-orange-400 to-red-500">
-                            <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="opacity-80 group-hover:opacity-100 transition-opacity">
-                                <circle cx="60" cy="60" r="40" stroke="white" stroke-width="1" stroke-dasharray="4 4" stroke-opacity="0.2"/>
-                                <line x1="60" y1="20" x2="100" y2="60" stroke="white" stroke-width="1" stroke-opacity="0.3"/>
-                                <line x1="100" y1="60" x2="60" y2="100" stroke="white" stroke-width="1" stroke-opacity="0.3"/>
-                                <line x1="60" y1="100" x2="20" y2="60" stroke="white" stroke-width="1" stroke-opacity="0.3"/>
-                                <line x1="20" y1="60" x2="60" y2="20" stroke="white" stroke-width="1" stroke-opacity="0.3"/>
-                                <line x1="60" y1="20" x2="60" y2="100" stroke="white" stroke-width="1" stroke-opacity="0.3"/>
-                                <line x1="20" y1="60" x2="100" y2="60" stroke="white" stroke-width="1" stroke-opacity="0.3"/>
-                                <circle cx="60" cy="60" r="4" fill="white"/>
-                                <circle cx="60" cy="20" r="6" fill="#818cf8"/>
-                                <circle cx="100" cy="60" r="6" fill="#818cf8"/>
-                                <circle cx="60" cy="100" r="6" fill="#818cf8"/>
-                                <circle cx="20" cy="60" r="6" fill="#818cf8"/>
-                            </svg>
-                        </div>
-                        <div class="absolute inset-0 bg-slate-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-5 backdrop-blur-sm">
-                            <a href="https://github.com/tarikfadlane/filecleaner" target="_blank" class="w-12 h-12 flex items-center justify-center bg-white text-slate-900 rounded-full hover:bg-primary hover:text-white transition-all transform hover:scale-110 shadow-lg" title="View Code">
-                                <i class="fa-brands fa-github text-2xl"></i>
+                <div class="project-card group fade-in-up relative overflow-hidden rounded-[2rem] bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-orange-500/50 col-span-1" data-category="backend" style="transition-delay: 200ms;">
+                    <div class="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none">
+                        <div class="absolute -top-10 left-10 w-48 h-48 bg-orange-400/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[50px] animate-blob"></div>
+                        <div class="absolute bottom-0 right-0 w-48 h-48 bg-red-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[50px] animate-blob animation-delay-2000"></div>
+                    </div>
+                    
+                    <div class="relative z-10 p-8 flex flex-col h-full">
+                        <div class="flex justify-between items-start absolute top-8 left-8 right-8 z-20">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">Python</span>
+                                <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">GUI</span>
+                            </div>
+                            <a href="https://github.com/tarikfadlane/filecleaner" target="_blank" class="w-10 h-10 flex items-center justify-center bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white rounded-full hover:bg-orange-500 hover:text-white transition-all transform hover:scale-110 shadow-lg backdrop-blur-md border border-white/20 dark:border-white/5" title="View Code">
+                                <i class="fa-brands fa-github text-lg"></i>
                             </a>
                         </div>
-                    </div>
-                    <div class="p-6 bg-white dark:bg-dark-card border border-t-0 border-slate-200 dark:border-dark-border rounded-b-2xl shadow-sm group-hover:shadow-xl transition-shadow duration-300 flex flex-col h-[220px]">
-                        <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-slate-100">Nettoyeur de Fichiers</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-5 line-clamp-3 leading-relaxed">Outil de nettoyage et d'organisation de fichiers avec une interface graphique intuitive, permettant de trier automatiquement les fichiers par type.</p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">GUI</span>
+                        
+                        <!-- Floating Icon -->
+                        <div class="relative w-full h-32 flex items-center justify-center mt-12 mb-4">
+                            <div class="w-28 h-28 rounded-3xl shadow-2xl border border-white/40 dark:border-white/10 bg-white/40 dark:bg-slate-800/40 backdrop-blur-md flex items-center justify-center rotate-3 group-hover:rotate-0 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500">
+                                <i class="fa-solid fa-broom text-5xl text-orange-600 dark:text-orange-400 drop-shadow-md group-hover:drop-shadow-xl transition-all"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-auto relative z-20">
+                            <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-white">Nettoyeur de Fichiers</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm line-clamp-2 leading-relaxed">Outil de nettoyage et d'organisation de fichiers avec une interface graphique intuitive, permettant de trier automatiquement les fichiers par type.</p>
                         </div>
                     </div>
                 </div>
 
-                 <!-- Project Card 4: Portfolio -->
-                <div class="project-card group fade-in-up" data-category="frontend">
-                    <div class="relative overflow-hidden rounded-t-2xl aspect-video bg-slate-100 dark:bg-slate-900">
-                        <div class="project-visual w-full h-full flex items-center justify-center transition-transform duration-700 ease-in-out group-hover:scale-105 bg-gradient-to-br from-blue-400 to-indigo-500 relative">
-                            <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-                                <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="w-full h-12 opacity-20">
-                                    <path d="M0,40 C150,60 350,0 600,20 C850,40 1050,0 1200,20 L1200,120 L0,120 Z" fill="white"></path>
-                                </svg>
-                            </div>
-                            <div class="relative w-36 h-24 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg flex flex-col p-3 z-10 opacity-90 group-hover:opacity-100 transition-opacity">
-                                <div class="flex gap-1.5 mb-3">
-                                    <div class="w-2 h-2 rounded-full bg-white/40"></div>
-                                    <div class="w-2 h-2 rounded-full bg-white/40"></div>
-                                    <div class="w-2 h-2 rounded-full bg-white/40"></div>
-                                </div>
-                                <div class="w-1/2 h-2 rounded bg-white/20 mb-2"></div>
-                                <div class="w-3/4 h-2 rounded bg-white/20 mb-2"></div>
-                                <div class="w-2/3 h-2 rounded bg-white/20"></div>
-                            </div>
-                        </div>
-                        <div class="absolute inset-0 bg-slate-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-5 backdrop-blur-sm">
-                            <a href="https://github.com/tarikfadlane/tarikfadlane.github.io" target="_blank" class="w-12 h-12 flex items-center justify-center bg-white text-slate-900 rounded-full hover:bg-primary hover:text-white transition-all transform hover:scale-110 shadow-lg" title="View Code">
-                                <i class="fa-brands fa-github text-2xl"></i>
-                            </a>
-                            <a href="https://tarikfadlane.github.io" target="_blank" class="w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full hover:bg-blue-600 transition-all transform hover:scale-110 shadow-lg" title="Live Demo">
-                                <i class="fa-solid fa-arrow-up-right-from-square text-xl"></i>
-                            </a>
-                        </div>
+                <!-- Project Card 4: Portfolio -->
+                <div class="project-card group fade-in-up relative overflow-hidden rounded-[2rem] bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-blue-500/50 col-span-1" data-category="frontend">
+                    <div class="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none">
+                        <div class="absolute top-0 right-0 w-48 h-48 bg-blue-400/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[50px] animate-blob"></div>
+                        <div class="absolute -bottom-10 -left-10 w-48 h-48 bg-indigo-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[50px] animate-blob animation-delay-2000"></div>
                     </div>
-                    <div class="p-6 bg-white dark:bg-dark-card border border-t-0 border-slate-200 dark:border-dark-border rounded-b-2xl shadow-sm group-hover:shadow-xl transition-shadow duration-300 flex flex-col h-[220px]">
-                        <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-slate-100">Portfolio Personnel</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-5 line-clamp-3 leading-relaxed">Mon site web portfolio personnel conçu pour mettre en valeur mes compétences, mes projets phares et mon parcours professionnel. Interface moderne et réactive.</p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="tech-badge">HTML/CSS</span>
-                            <span class="tech-badge">JavaScript</span>
+                    
+                    <div class="relative z-10 p-8 flex flex-col h-full">
+                        <div class="flex justify-between items-start absolute top-8 left-8 right-8 z-20">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">HTML/CSS</span>
+                                <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">JavaScript</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="https://github.com/tarikfadlane/tarikfadlane.github.io" target="_blank" class="w-10 h-10 flex items-center justify-center bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white rounded-full hover:bg-blue-500 hover:text-white transition-all transform hover:scale-110 shadow-lg backdrop-blur-md border border-white/20 dark:border-white/5" title="View Code">
+                                    <i class="fa-brands fa-github text-lg"></i>
+                                </a>
+                                <a href="https://tarikfadlane.github.io" target="_blank" class="w-10 h-10 flex items-center justify-center bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-all transform hover:scale-110 shadow-lg backdrop-blur-md border border-white/20 dark:border-white/5" title="Live Demo">
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Icon -->
+                        <div class="relative w-full h-32 flex items-center justify-center mt-12 mb-4">
+                            <div class="w-28 h-28 rounded-3xl shadow-2xl border border-white/40 dark:border-white/10 bg-white/40 dark:bg-slate-800/40 backdrop-blur-md flex items-center justify-center -rotate-3 group-hover:rotate-0 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500">
+                                <i class="fa-solid fa-laptop-code text-5xl text-blue-600 dark:text-blue-400 drop-shadow-md group-hover:drop-shadow-xl transition-all"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-auto relative z-20">
+                            <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-white">Portfolio Personnel</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm line-clamp-2 leading-relaxed">Mon site web portfolio personnel conçu pour mettre en valeur mes compétences, mes projets phares et mon parcours professionnel.</p>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Project Card 5: Pygame -->
-                <div class="project-card group fade-in-up" data-category="frontend" style="transition-delay: 100ms;">
-                    <div class="relative overflow-hidden rounded-t-2xl aspect-video bg-slate-100 dark:bg-slate-900">
-                        <div class="project-visual w-full h-full flex items-center justify-center transition-transform duration-700 ease-in-out group-hover:scale-105 bg-gradient-to-br from-yellow-400 to-orange-500 relative">
-                            <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-                                <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="w-full h-12 opacity-20">
-                                    <path d="M0,40 C150,60 350,0 600,20 C850,40 1050,0 1200,20 L1200,120 L0,120 Z" fill="white"></path>
-                                </svg>
+                <div class="project-card group fade-in-up relative overflow-hidden rounded-[2rem] bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-yellow-500/50 col-span-1" data-category="frontend" style="transition-delay: 100ms;">
+                    <div class="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none">
+                        <div class="absolute top-0 -left-10 w-48 h-48 bg-yellow-400/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[50px] animate-blob"></div>
+                        <div class="absolute -bottom-10 right-0 w-48 h-48 bg-orange-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[50px] animate-blob animation-delay-2000"></div>
+                    </div>
+                    
+                    <div class="relative z-10 p-8 flex flex-col h-full">
+                        <div class="flex justify-between items-start absolute top-8 left-8 right-8 z-20">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">Python</span>
+                                <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">Pygame</span>
                             </div>
-                            <div class="relative w-36 h-24 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg flex flex-col p-3 z-10 opacity-90 group-hover:opacity-100 transition-opacity">
-                                <div class="flex gap-1.5 mb-3">
-                                    <div class="w-2 h-2 rounded-full bg-white/40"></div>
-                                    <div class="w-2 h-2 rounded-full bg-white/40"></div>
-                                    <div class="w-2 h-2 rounded-full bg-white/40"></div>
-                                </div>
-                                <div class="w-1/2 h-2 rounded bg-white/20 mb-2"></div>
-                                <div class="w-3/4 h-2 rounded bg-white/20 mb-2"></div>
-                                <div class="w-2/3 h-2 rounded bg-white/20"></div>
-                            </div>
-                        </div>
-                        <div class="absolute inset-0 bg-slate-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-5 backdrop-blur-sm">
-                            <a href="https://github.com/tarikfadlane/pygame" target="_blank" class="w-12 h-12 flex items-center justify-center bg-white text-slate-900 rounded-full hover:bg-primary hover:text-white transition-all transform hover:scale-110 shadow-lg" title="View Code">
-                                <i class="fa-brands fa-github text-2xl"></i>
+                            <a href="https://github.com/tarikfadlane/pygame" target="_blank" class="w-10 h-10 flex items-center justify-center bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white rounded-full hover:bg-yellow-500 hover:text-white transition-all transform hover:scale-110 shadow-lg backdrop-blur-md border border-white/20 dark:border-white/5" title="View Code">
+                                <i class="fa-brands fa-github text-lg"></i>
                             </a>
                         </div>
-                    </div>
-                    <div class="p-6 bg-white dark:bg-dark-card border border-t-0 border-slate-200 dark:border-dark-border rounded-b-2xl shadow-sm group-hover:shadow-xl transition-shadow duration-300 flex flex-col h-[220px]">
-                        <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-slate-100">Jeu Interactif</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-5 line-clamp-3 leading-relaxed">Un jeu vidéo interactif développé en Python utilisant la bibliothèque Pygame, démontrant la logique de jeu et la gestion des événements.</p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">Pygame</span>
+                        
+                        <!-- Floating Icon -->
+                        <div class="relative w-full h-32 flex items-center justify-center mt-12 mb-4">
+                            <div class="w-28 h-28 rounded-3xl shadow-2xl border border-white/40 dark:border-white/10 bg-white/40 dark:bg-slate-800/40 backdrop-blur-md flex items-center justify-center rotate-3 group-hover:rotate-0 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500">
+                                <i class="fa-solid fa-gamepad text-5xl text-yellow-600 dark:text-yellow-400 drop-shadow-md group-hover:drop-shadow-xl transition-all"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-auto relative z-20">
+                            <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-white">Jeu Interactif</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm line-clamp-2 leading-relaxed">Un jeu vidéo interactif développé en Python utilisant la bibliothèque Pygame, démontrant la logique de jeu et la gestion des événements.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project Card 6: Calculatrice -->
-                <div class="project-card group fade-in-up" data-category="frontend" style="transition-delay: 200ms;">
-                    <div class="relative overflow-hidden rounded-t-2xl aspect-video bg-slate-100 dark:bg-slate-900">
-                        <div class="project-visual w-full h-full flex items-center justify-center transition-transform duration-700 ease-in-out group-hover:scale-105 bg-gradient-to-br from-cyan-400 to-blue-500 relative">
-                            <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-                                <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="w-full h-12 opacity-20">
-                                    <path d="M0,40 C150,60 350,0 600,20 C850,40 1050,0 1200,20 L1200,120 L0,120 Z" fill="white"></path>
-                                </svg>
-                            </div>
-                            <div class="relative w-36 h-24 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg flex flex-col p-3 z-10 opacity-90 group-hover:opacity-100 transition-opacity">
-                                <div class="flex gap-1.5 mb-3">
-                                    <div class="w-2 h-2 rounded-full bg-white/40"></div>
-                                    <div class="w-2 h-2 rounded-full bg-white/40"></div>
-                                    <div class="w-2 h-2 rounded-full bg-white/40"></div>
+                <div class="project-card group fade-in-up relative overflow-hidden rounded-[2rem] bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-cyan-500/50 md:col-span-2 lg:col-span-2" data-category="frontend" style="transition-delay: 200ms;">
+                    <div class="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none">
+                        <div class="absolute top-1/2 left-1/4 w-72 h-72 bg-cyan-400/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[80px] animate-blob"></div>
+                        <div class="absolute bottom-0 right-1/4 w-72 h-72 bg-blue-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[80px] animate-blob animation-delay-2000"></div>
+                    </div>
+                    
+                    <div class="relative z-10 p-8 flex flex-col md:flex-row-reverse h-full gap-8 items-center">
+                        <!-- Left (actually Right due to row-reverse): Content -->
+                        <div class="flex flex-col h-full w-full md:w-1/2">
+                            <div class="flex justify-between items-start mb-auto">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">HTML/CSS</span>
+                                    <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">JavaScript</span>
                                 </div>
-                                <div class="w-1/2 h-2 rounded bg-white/20 mb-2"></div>
-                                <div class="w-3/4 h-2 rounded bg-white/20 mb-2"></div>
-                                <div class="w-2/3 h-2 rounded bg-white/20"></div>
+                                <a href="https://github.com/tarikfadlane/calculatrice" target="_blank" class="w-12 h-12 flex items-center justify-center bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white rounded-full hover:bg-cyan-500 hover:text-white transition-all transform hover:scale-110 shadow-lg backdrop-blur-md border border-white/20 dark:border-white/5" title="View Code">
+                                    <i class="fa-brands fa-github text-xl"></i>
+                                </a>
+                            </div>
+                            
+                            <div class="mt-8 relative">
+                                <h3 class="text-2xl md:text-3xl font-bold mb-3 text-slate-800 dark:text-white">Calculatrice Web</h3>
+                                <p class="text-slate-600 dark:text-slate-300 text-sm md:text-base line-clamp-3 leading-relaxed">Une calculatrice web fonctionnelle et esthétique, permettant d'effectuer des opérations mathématiques de base avec une interface utilisateur intuitive.</p>
                             </div>
                         </div>
-                        <div class="absolute inset-0 bg-slate-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-5 backdrop-blur-sm">
-                            <a href="https://github.com/tarikfadlane/calculatrice" target="_blank" class="w-12 h-12 flex items-center justify-center bg-white text-slate-900 rounded-full hover:bg-primary hover:text-white transition-all transform hover:scale-110 shadow-lg" title="View Code">
-                                <i class="fa-brands fa-github text-2xl"></i>
-                            </a>
+                        
+                        <!-- Right (actually Left): Floating Icon -->
+                        <div class="w-full md:w-1/2 relative h-48 md:h-full flex items-center justify-center mt-6 md:mt-0">
+                            <div class="w-32 h-32 md:w-40 md:h-40 rounded-3xl shadow-2xl border border-white/40 dark:border-white/10 bg-white/40 dark:bg-slate-800/40 backdrop-blur-md flex items-center justify-center -rotate-3 group-hover:rotate-0 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500">
+                                <i class="fa-solid fa-calculator text-6xl md:text-7xl text-cyan-600 dark:text-cyan-400 drop-shadow-md group-hover:drop-shadow-xl transition-all"></i>
+                            </div>
                         </div>
                     </div>
-                    <div class="p-6 bg-white dark:bg-dark-card border border-t-0 border-slate-200 dark:border-dark-border rounded-b-2xl shadow-sm group-hover:shadow-xl transition-shadow duration-300 flex flex-col h-[220px]">
-                        <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-slate-100">Calculatrice Web</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-5 line-clamp-3 leading-relaxed">Une calculatrice web fonctionnelle et esthétique, permettant d'effectuer des opérations mathématiques de base avec une interface utilisateur intuitive.</p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="tech-badge">HTML/CSS</span>
-                            <span class="tech-badge">JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+                </div>            </div>
         </div>
     </section>
 
