@@ -1,15 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Prevent FOUC for Dark Mode -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
     <title>Portfolio | Digital Developer</title>
-    
+
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -38,10 +49,10 @@
             }
         }
     </script>
-    
+
     <!-- FontAwesome for precise SVG icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Custom CSS -->
     <style type="text/tailwindcss">
         /* Custom Styles and Utility Classes */
@@ -184,7 +195,9 @@
         }
     </style>
 </head>
-<body class="bg-light-bg dark:bg-dark-bg text-slate-900 dark:text-slate-100 transition-colors duration-300 antialiased selection:bg-primary selection:text-white font-sans">
+
+<body
+    class="bg-light-bg dark:bg-dark-bg text-slate-900 dark:text-slate-100 transition-colors duration-300 antialiased selection:bg-primary selection:text-white font-sans">
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
@@ -192,24 +205,30 @@
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="#home" class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">DevPortfolio</a>
+                    <a href="#home"
+                        class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">DevPortfolio</a>
                 </div>
-                
+
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#home" class="nav-link">Accueil</a>
                     <a href="#about" class="nav-link">À propos</a>
                     <a href="#projects" class="nav-link">Projets</a>
                     <a href="#contact" class="nav-link">Contact</a>
-                    
+
                     <div class="flex items-center space-x-4 border-l border-slate-300 dark:border-slate-700 pl-4">
-                        <a href="https://github.com/tarikfadlane" target="_blank" class="social-icon" aria-label="GitHub"><i class="fa-brands fa-github text-xl"></i></a>
-                        <a href="https://www.linkedin.com/in/tarikfadlane/" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin text-xl"></i></a>
-                        <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Dark Mode">
+                        <a href="https://github.com/tarikfadlane" target="_blank" class="social-icon"
+                            aria-label="GitHub"><i class="fa-brands fa-github text-xl"></i></a>
+                        <a href="https://www.linkedin.com/in/tarikfadlane/" target="_blank" class="social-icon"
+                            aria-label="LinkedIn"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                        <button id="theme-toggle"
+                            class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
+                            aria-label="Toggle Dark Mode">
                             <i class="fa-solid fa-moon dark:hidden text-slate-700"></i>
                             <i class="fa-solid fa-sun hidden dark:block text-slate-300"></i>
                         </button>
-                        <a href="#" class="px-4 py-2 rounded-lg border border-primary/50 text-primary hover:bg-primary hover:text-white transition-all duration-300 font-semibold text-sm flex items-center gap-2 hover:-translate-y-0.5 shadow-sm hover:shadow-primary/20 bg-primary/5 dark:bg-primary/10 backdrop-blur-sm">
+                        <a href="https://github.com/user-attachments/files/30152003/resume.pdf"
+                            class="px-4 py-2 rounded-lg border border-primary/50 text-primary hover:bg-primary hover:text-white transition-all duration-300 font-semibold text-sm flex items-center gap-2 hover:-translate-y-0.5 shadow-sm hover:shadow-primary/20 bg-primary/5 dark:bg-primary/10 backdrop-blur-sm">
                             <span>Resume</span>
                             <i class="fa-solid fa-download text-sm"></i>
                         </a>
@@ -218,31 +237,38 @@
 
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center space-x-4">
-                    <button id="theme-toggle-mobile" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Dark Mode">
+                    <button id="theme-toggle-mobile"
+                        class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
+                        aria-label="Toggle Dark Mode">
                         <i class="fa-solid fa-moon dark:hidden text-slate-700"></i>
                         <i class="fa-solid fa-sun hidden dark:block text-slate-300"></i>
                     </button>
-                    <button id="mobile-menu-btn" class="text-slate-700 dark:text-slate-300 hover:text-primary transition-colors focus:outline-none">
+                    <button id="mobile-menu-btn"
+                        class="text-slate-700 dark:text-slate-300 hover:text-primary transition-colors focus:outline-none">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
-        
+
         <!-- Mobile Menu Drawer -->
-        <div id="mobile-menu" class="fixed inset-0 bg-light-bg dark:bg-dark-bg z-40 transform translate-x-full transition-transform duration-300 md:hidden pt-20 px-6">
+        <div id="mobile-menu"
+            class="fixed inset-0 bg-light-bg dark:bg-dark-bg z-40 transform translate-x-full transition-transform duration-300 md:hidden pt-20 px-6">
             <div class="flex flex-col space-y-6 mt-8">
                 <a href="#home" class="mobile-link">Accueil</a>
                 <a href="#about" class="mobile-link">À propos</a>
                 <a href="#projects" class="mobile-link">Projets</a>
                 <a href="#contact" class="mobile-link">Contact</a>
-                
+
                 <div class="pt-6 border-t border-slate-300 dark:border-slate-700 flex flex-col space-y-4">
                     <div class="flex space-x-6 justify-center">
-                        <a href="https://github.com/tarikfadlane" target="_blank" class="social-icon"><i class="fa-brands fa-github text-3xl"></i></a>
-                        <a href="https://www.linkedin.com/in/tarikfadlane/" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin text-3xl"></i></a>
+                        <a href="https://github.com/tarikfadlane" target="_blank" class="social-icon"><i
+                                class="fa-brands fa-github text-3xl"></i></a>
+                        <a href="https://www.linkedin.com/in/tarikfadlane/" target="_blank" class="social-icon"><i
+                                class="fa-brands fa-linkedin text-3xl"></i></a>
                     </div>
-                    <a href="#" class="w-full py-3 rounded-xl border border-primary/50 text-primary hover:bg-primary hover:text-white transition-all duration-300 font-bold text-center flex justify-center items-center gap-2 mt-4 hover:-translate-y-0.5 shadow-sm hover:shadow-primary/20 bg-primary/5 dark:bg-primary/10">
+                    <a href="#"
+                        class="w-full py-3 rounded-xl border border-primary/50 text-primary hover:bg-primary hover:text-white transition-all duration-300 font-bold text-center flex justify-center items-center gap-2 mt-4 hover:-translate-y-0.5 shadow-sm hover:shadow-primary/20 bg-primary/5 dark:bg-primary/10">
                         <span>Télécharger le CV</span>
                         <i class="fa-solid fa-download"></i>
                     </a>
@@ -252,42 +278,63 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center pt-32 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section id="home"
+        class="min-h-screen flex items-center justify-center pt-32 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <!-- Background Decor -->
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-50 animate-blob"></div>
-        <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-50 animate-blob">
+        </div>
+        <div
+            class="absolute top-1/3 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl opacity-50 animate-blob animation-delay-2000">
+        </div>
 
         <div class="max-w-4xl mx-auto text-center relative z-10 fade-in-up">
-            <p class="text-primary font-semibold tracking-wider uppercase mb-4 text-sm md:text-base">Bienvenue sur mon portfolio</p>
+            <p class="text-primary font-semibold tracking-wider uppercase mb-4 text-sm md:text-base">Bienvenue sur mon
+                portfolio</p>
             <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
-                Salut, je suis <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Tarik Fadlane</span>
+                Salut, je suis <span
+                    class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Tarik
+                    Fadlane</span>
                 <br>
-                <span class="text-3xl md:text-5xl text-slate-700 dark:text-slate-300 mt-3 block font-bold">Développeur Digital & Programmeur</span>
+                <span class="text-3xl md:text-5xl text-slate-700 dark:text-slate-300 mt-3 block font-bold">Développeur
+                    Digital & Programmeur</span>
             </h1>
-            <p class="mt-6 text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-                Passionné par le développement d'applications web modernes, la conception de bases de données robustes et l'optimisation d'environnements open-source.
+            <p
+                class="mt-6 text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+                Passionné par le développement d'applications web modernes, la conception de bases de données robustes
+                et l'optimisation d'environnements open-source.
             </p>
-            
+
             <!-- Quick Socials -->
             <div class="flex items-center justify-center space-x-6 mb-12">
-                <a href="https://github.com/tarikfadlane" target="_blank" class="social-icon-large" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/tarikfadlane/" target="_blank" class="social-icon-large" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="mailto:tarikfadlane.mj@gmail.com" class="social-icon-large" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://github.com/tarikfadlane" target="_blank" class="social-icon-large"
+                    aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/tarikfadlane/" target="_blank" class="social-icon-large"
+                    aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:tarikfadlane.mj@gmail.com" class="social-icon-large" aria-label="Email"><i
+                        class="fa-solid fa-envelope"></i></a>
             </div>
 
             <!-- CTAs -->
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mt-4">
-                <a href="#projects" class="relative group px-8 py-4 bg-gradient-to-r from-blue-600 to-violet-600 text-white font-bold rounded-full overflow-hidden shadow-lg shadow-blue-500/30 transition-all duration-300 hover:scale-105 hover:shadow-blue-500/50 w-full sm:w-auto text-center text-lg">
+                <a href="#projects"
+                    class="relative group px-8 py-4 bg-gradient-to-r from-blue-600 to-violet-600 text-white font-bold rounded-full overflow-hidden shadow-lg shadow-blue-500/30 transition-all duration-300 hover:scale-105 hover:shadow-blue-500/50 w-full sm:w-auto text-center text-lg">
                     <span class="relative z-10 flex items-center justify-center gap-2">
-                        Voir mon travail <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        Voir mon travail <i
+                            class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                     </span>
-                    <div class="absolute inset-0 h-full w-full bg-gradient-to-r from-violet-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div
+                        class="absolute inset-0 h-full w-full bg-gradient-to-r from-violet-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    </div>
                 </a>
-                <a href="#contact" class="relative group px-8 py-4 bg-transparent text-slate-800 dark:text-white font-bold rounded-full overflow-hidden border-2 border-slate-300 dark:border-slate-700 transition-all duration-300 hover:scale-105 hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/20 w-full sm:w-auto text-center text-lg">
+                <a href="#contact"
+                    class="relative group px-8 py-4 bg-transparent text-slate-800 dark:text-white font-bold rounded-full overflow-hidden border-2 border-slate-300 dark:border-slate-700 transition-all duration-300 hover:scale-105 hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/20 w-full sm:w-auto text-center text-lg">
                     <span class="relative z-10 flex items-center justify-center gap-2">
-                        Contactons-nous <i class="fa-solid fa-paper-plane group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform"></i>
+                        Contactons-nous <i
+                            class="fa-solid fa-paper-plane group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform"></i>
                     </span>
-                    <div class="absolute inset-0 h-full w-full bg-blue-50 dark:bg-slate-800/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div
+                        class="absolute inset-0 h-full w-full bg-blue-50 dark:bg-slate-800/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    </div>
                 </a>
             </div>
         </div>
@@ -303,10 +350,13 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="fade-in-up">
-                    <h3 class="text-2xl font-bold mb-6 text-slate-800 dark:text-slate-100">Mon engagement dans le développement digital</h3>
+                    <h3 class="text-2xl font-bold mb-6 text-slate-800 dark:text-slate-100">Mon engagement dans le
+                        développement digital</h3>
                     <div class="space-y-4 text-slate-600 dark:text-slate-400 text-lg leading-relaxed font-light">
                         <p>
-                            Étudiant passionné en développement digital, je me concentre sur la création d'architectures propres et de solutions logicielles performantes. Mon parcours diversifié m'a apporté une grande rigueur scientifique et une forte capacité de résolution de problèmes.
+                            Étudiant passionné en développement digital, je me concentre sur la création d'architectures
+                            propres et de solutions logicielles performantes. Mon parcours diversifié m'a apporté une
+                            grande rigueur scientifique et une forte capacité de résolution de problèmes.
                         </p>
                     </div>
                 </div>
@@ -314,17 +364,25 @@
                 <div class="fade-in-up" style="transition-delay: 200ms;">
                     <div class="grid sm:grid-cols-2 gap-6">
                         <!-- Frontend Skills -->
-                        <div class="skill-card p-6 rounded-2xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm hover:shadow-lg transition-shadow duration-300">
-                            <h4 class="text-lg font-bold mb-4 flex items-center gap-3 text-slate-800 dark:text-slate-100"><i class="fa-solid fa-code text-primary"></i> Frontend</h4>
+                        <div
+                            class="skill-card p-6 rounded-2xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm hover:shadow-lg transition-shadow duration-300">
+                            <h4
+                                class="text-lg font-bold mb-4 flex items-center gap-3 text-slate-800 dark:text-slate-100">
+                                <i class="fa-solid fa-code text-primary"></i> Frontend
+                            </h4>
                             <div class="flex flex-wrap gap-2">
                                 <span class="skill-badge">HTML/CSS</span>
                                 <span class="skill-badge">JavaScript</span>
                             </div>
                         </div>
-                        
+
                         <!-- Backend & DBs -->
-                        <div class="skill-card p-6 rounded-2xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm hover:shadow-lg transition-shadow duration-300">
-                            <h4 class="text-lg font-bold mb-4 flex items-center gap-3 text-slate-800 dark:text-slate-100"><i class="fa-solid fa-server text-secondary"></i> Backend & Databases</h4>
+                        <div
+                            class="skill-card p-6 rounded-2xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm hover:shadow-lg transition-shadow duration-300">
+                            <h4
+                                class="text-lg font-bold mb-4 flex items-center gap-3 text-slate-800 dark:text-slate-100">
+                                <i class="fa-solid fa-server text-secondary"></i> Backend & Databases
+                            </h4>
                             <div class="flex flex-wrap gap-2">
                                 <span class="skill-badge">PHP</span>
                                 <span class="skill-badge">Python</span>
@@ -333,18 +391,26 @@
                         </div>
 
                         <!-- Tools & Systems -->
-                        <div class="skill-card p-6 rounded-2xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm hover:shadow-lg transition-shadow duration-300">
-                            <h4 class="text-lg font-bold mb-4 flex items-center gap-3 text-slate-800 dark:text-slate-100"><i class="fa-solid fa-screwdriver-wrench text-emerald-500"></i> Tools & Systems</h4>
+                        <div
+                            class="skill-card p-6 rounded-2xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm hover:shadow-lg transition-shadow duration-300">
+                            <h4
+                                class="text-lg font-bold mb-4 flex items-center gap-3 text-slate-800 dark:text-slate-100">
+                                <i class="fa-solid fa-screwdriver-wrench text-emerald-500"></i> Tools & Systems
+                            </h4>
                             <div class="flex flex-wrap gap-2">
                                 <span class="skill-badge">Git & GitHub</span>
                                 <span class="skill-badge">VS Code</span>
                                 <span class="skill-badge">Linux</span>
                             </div>
                         </div>
-                        
+
                         <!-- Soft Skills -->
-                        <div class="skill-card p-6 rounded-2xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm hover:shadow-lg transition-shadow duration-300">
-                            <h4 class="text-lg font-bold mb-4 flex items-center gap-3 text-slate-800 dark:text-slate-100"><i class="fa-solid fa-users text-amber-500"></i> Compétences Humaines</h4>
+                        <div
+                            class="skill-card p-6 rounded-2xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm hover:shadow-lg transition-shadow duration-300">
+                            <h4
+                                class="text-lg font-bold mb-4 flex items-center gap-3 text-slate-800 dark:text-slate-100">
+                                <i class="fa-solid fa-users text-amber-500"></i> Compétences Humaines
+                            </h4>
                             <div class="flex flex-wrap gap-2">
                                 <span class="skill-badge">Travail d'équipe</span>
                                 <span class="skill-badge">Leadership & Gestion d'équipe</span>
@@ -363,7 +429,7 @@
             <div class="text-center mb-12 section-heading fade-in-up">
                 <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Projets Phares</h2>
                 <div class="w-20 h-1.5 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full mb-10"></div>
-                
+
                 <!-- Filters -->
                 <div class="flex flex-wrap justify-center gap-3 mb-12">
                     <button class="filter-btn active" data-filter="all">Tout</button>
@@ -374,210 +440,306 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[350px] grid-flow-dense" id="projects-grid">
-                
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[350px] grid-flow-dense"
+                id="projects-grid">
+
                 <!-- Project Card 1: E-commerce -->
-                <div class="project-card group fade-in-up relative overflow-hidden rounded-[2rem] bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-primary/50 md:col-span-2 lg:col-span-2" data-category="fullstack">
-                    <div class="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none">
-                        <div class="absolute -top-20 -left-20 w-72 h-72 bg-indigo-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[80px] animate-blob"></div>
-                        <div class="absolute -bottom-20 -right-20 w-72 h-72 bg-purple-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[80px] animate-blob animation-delay-2000"></div>
+                <div class="project-card group fade-in-up relative overflow-hidden rounded-[2rem] bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-primary/50 md:col-span-2 lg:col-span-2"
+                    data-category="fullstack">
+                    <div
+                        class="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none">
+                        <div
+                            class="absolute -top-20 -left-20 w-72 h-72 bg-indigo-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[80px] animate-blob">
+                        </div>
+                        <div
+                            class="absolute -bottom-20 -right-20 w-72 h-72 bg-purple-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[80px] animate-blob animation-delay-2000">
+                        </div>
                     </div>
-                    
+
                     <div class="relative z-10 p-8 flex flex-col md:flex-row h-full gap-8 items-center">
                         <!-- Left: Content -->
                         <div class="flex flex-col h-full w-full md:w-1/2">
                             <div class="flex justify-between items-start mb-auto">
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">HTML/CSS</span>
-                                    <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">JavaScript</span>
+                                    <span
+                                        class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">HTML/CSS</span>
+                                    <span
+                                        class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">JavaScript</span>
                                 </div>
-                                <a href="https://github.com/tarikfadlane/website_e-commerce" target="_blank" class="w-12 h-12 flex items-center justify-center bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white rounded-full hover:bg-primary hover:text-white transition-all transform hover:scale-110 shadow-lg backdrop-blur-md border border-white/20 dark:border-white/5" title="View Code">
+                                <a href="https://github.com/tarikfadlane/website_e-commerce" target="_blank"
+                                    class="w-12 h-12 flex items-center justify-center bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white rounded-full hover:bg-primary hover:text-white transition-all transform hover:scale-110 shadow-lg backdrop-blur-md border border-white/20 dark:border-white/5"
+                                    title="View Code">
                                     <i class="fa-brands fa-github text-xl"></i>
                                 </a>
                             </div>
-                            
+
                             <div class="mt-8 relative">
-                                <h3 class="text-2xl md:text-3xl font-bold mb-3 text-slate-800 dark:text-white">Boutique E-commerce</h3>
-                                <p class="text-slate-600 dark:text-slate-300 text-sm md:text-base line-clamp-3 leading-relaxed">Un projet e-commerce complet incluant un panier d'achat fonctionnel, un chatbot interactif pour l'assistance client, et les fonctionnalités principales d'une boutique en ligne.</p>
+                                <h3 class="text-2xl md:text-3xl font-bold mb-3 text-slate-800 dark:text-white">Boutique
+                                    E-commerce</h3>
+                                <p
+                                    class="text-slate-600 dark:text-slate-300 text-sm md:text-base line-clamp-3 leading-relaxed">
+                                    Un projet e-commerce complet incluant un panier d'achat fonctionnel, un chatbot
+                                    interactif pour l'assistance client, et les fonctionnalités principales d'une
+                                    boutique en ligne.</p>
                             </div>
                         </div>
-                        
+
                         <!-- Right: Floating Icon -->
-                        <div class="w-full md:w-1/2 relative h-48 md:h-full flex items-center justify-center mt-6 md:mt-0">
-                            <div class="w-32 h-32 md:w-40 md:h-40 rounded-3xl shadow-2xl border border-white/40 dark:border-white/10 bg-white/40 dark:bg-slate-800/40 backdrop-blur-md flex items-center justify-center rotate-3 group-hover:rotate-0 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500">
-                                <i class="fa-solid fa-cart-shopping text-6xl md:text-7xl text-indigo-600 dark:text-indigo-400 drop-shadow-md group-hover:drop-shadow-xl transition-all"></i>
+                        <div
+                            class="w-full md:w-1/2 relative h-48 md:h-full flex items-center justify-center mt-6 md:mt-0">
+                            <div
+                                class="w-32 h-32 md:w-40 md:h-40 rounded-3xl shadow-2xl border border-white/40 dark:border-white/10 bg-white/40 dark:bg-slate-800/40 backdrop-blur-md flex items-center justify-center rotate-3 group-hover:rotate-0 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500">
+                                <i
+                                    class="fa-solid fa-cart-shopping text-6xl md:text-7xl text-indigo-600 dark:text-indigo-400 drop-shadow-md group-hover:drop-shadow-xl transition-all"></i>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project Card 2: Gestabsence -->
-                <div class="project-card group fade-in-up relative overflow-hidden rounded-[2rem] bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-emerald-500/50 lg:row-span-2" data-category="backend" style="transition-delay: 100ms;">
-                    <div class="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none">
-                        <div class="absolute top-1/4 -right-10 w-60 h-60 bg-emerald-400/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[60px] animate-blob"></div>
-                        <div class="absolute bottom-1/4 -left-10 w-60 h-60 bg-teal-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[60px] animate-blob animation-delay-2000"></div>
+                <div class="project-card group fade-in-up relative overflow-hidden rounded-[2rem] bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-emerald-500/50 lg:row-span-2"
+                    data-category="backend" style="transition-delay: 100ms;">
+                    <div
+                        class="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none">
+                        <div
+                            class="absolute top-1/4 -right-10 w-60 h-60 bg-emerald-400/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[60px] animate-blob">
+                        </div>
+                        <div
+                            class="absolute bottom-1/4 -left-10 w-60 h-60 bg-teal-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[60px] animate-blob animation-delay-2000">
+                        </div>
                     </div>
-                    
+
                     <div class="relative z-10 p-8 flex flex-col h-full">
                         <div class="flex justify-between items-start">
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">Python</span>
-                                <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">OpenCV</span>
+                                <span
+                                    class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">Python</span>
+                                <span
+                                    class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">OpenCV</span>
                             </div>
-                            <a href="https://github.com/tarikfadlane/gestabsence" target="_blank" class="w-12 h-12 flex items-center justify-center bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white rounded-full hover:bg-emerald-500 hover:text-white transition-all transform hover:scale-110 shadow-lg backdrop-blur-md border border-white/20 dark:border-white/5" title="View Code">
+                            <a href="https://github.com/tarikfadlane/gestabsence" target="_blank"
+                                class="w-12 h-12 flex items-center justify-center bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white rounded-full hover:bg-emerald-500 hover:text-white transition-all transform hover:scale-110 shadow-lg backdrop-blur-md border border-white/20 dark:border-white/5"
+                                title="View Code">
                                 <i class="fa-brands fa-github text-xl"></i>
                             </a>
                         </div>
-                        
+
                         <!-- Top/Middle: Floating Icon -->
                         <div class="relative w-full flex-1 flex items-center justify-center my-8">
-                            <div class="w-32 h-32 md:w-40 md:h-40 rounded-3xl shadow-2xl border border-white/40 dark:border-white/10 bg-white/40 dark:bg-slate-800/40 backdrop-blur-md flex items-center justify-center -rotate-3 group-hover:rotate-0 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500">
-                                <i class="fa-solid fa-user-check text-6xl md:text-7xl text-emerald-600 dark:text-emerald-400 drop-shadow-md group-hover:drop-shadow-xl transition-all"></i>
+                            <div
+                                class="w-32 h-32 md:w-40 md:h-40 rounded-3xl shadow-2xl border border-white/40 dark:border-white/10 bg-white/40 dark:bg-slate-800/40 backdrop-blur-md flex items-center justify-center -rotate-3 group-hover:rotate-0 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500">
+                                <i
+                                    class="fa-solid fa-user-check text-6xl md:text-7xl text-emerald-600 dark:text-emerald-400 drop-shadow-md group-hover:drop-shadow-xl transition-all"></i>
                             </div>
                         </div>
-                        
+
                         <div class="mt-auto">
                             <h3 class="text-2xl font-bold mb-3 text-slate-800 dark:text-white">Système de Présence</h3>
-                            <p class="text-slate-600 dark:text-slate-300 text-sm line-clamp-3 md:line-clamp-6 leading-relaxed">Application de reconnaissance faciale en temps réel utilisant OpenCV et l'algorithme LBPH pour suivre automatiquement la présence des étudiants.</p>
+                            <p
+                                class="text-slate-600 dark:text-slate-300 text-sm line-clamp-3 md:line-clamp-6 leading-relaxed">
+                                Application de reconnaissance faciale en temps réel utilisant OpenCV et l'algorithme
+                                LBPH pour suivre automatiquement la présence des étudiants.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project Card 3: Filecleaner -->
-                <div class="project-card group fade-in-up relative overflow-hidden rounded-[2rem] bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-orange-500/50 col-span-1" data-category="backend" style="transition-delay: 200ms;">
-                    <div class="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none">
-                        <div class="absolute -top-10 left-10 w-48 h-48 bg-orange-400/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[50px] animate-blob"></div>
-                        <div class="absolute bottom-0 right-0 w-48 h-48 bg-red-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[50px] animate-blob animation-delay-2000"></div>
+                <div class="project-card group fade-in-up relative overflow-hidden rounded-[2rem] bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-orange-500/50 col-span-1"
+                    data-category="backend" style="transition-delay: 200ms;">
+                    <div
+                        class="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none">
+                        <div
+                            class="absolute -top-10 left-10 w-48 h-48 bg-orange-400/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[50px] animate-blob">
+                        </div>
+                        <div
+                            class="absolute bottom-0 right-0 w-48 h-48 bg-red-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[50px] animate-blob animation-delay-2000">
+                        </div>
                     </div>
-                    
+
                     <div class="relative z-10 p-8 flex flex-col h-full">
                         <div class="flex justify-between items-start absolute top-8 left-8 right-8 z-20">
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">Python</span>
-                                <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">GUI</span>
+                                <span
+                                    class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">Python</span>
+                                <span
+                                    class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">GUI</span>
                             </div>
-                            <a href="https://github.com/tarikfadlane/filecleaner" target="_blank" class="w-10 h-10 flex items-center justify-center bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white rounded-full hover:bg-orange-500 hover:text-white transition-all transform hover:scale-110 shadow-lg backdrop-blur-md border border-white/20 dark:border-white/5" title="View Code">
+                            <a href="https://github.com/tarikfadlane/filecleaner" target="_blank"
+                                class="w-10 h-10 flex items-center justify-center bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white rounded-full hover:bg-orange-500 hover:text-white transition-all transform hover:scale-110 shadow-lg backdrop-blur-md border border-white/20 dark:border-white/5"
+                                title="View Code">
                                 <i class="fa-brands fa-github text-lg"></i>
                             </a>
                         </div>
-                        
+
                         <!-- Floating Icon -->
                         <div class="relative w-full h-32 flex items-center justify-center mt-12 mb-4">
-                            <div class="w-28 h-28 rounded-3xl shadow-2xl border border-white/40 dark:border-white/10 bg-white/40 dark:bg-slate-800/40 backdrop-blur-md flex items-center justify-center rotate-3 group-hover:rotate-0 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500">
-                                <i class="fa-solid fa-broom text-5xl text-orange-600 dark:text-orange-400 drop-shadow-md group-hover:drop-shadow-xl transition-all"></i>
+                            <div
+                                class="w-28 h-28 rounded-3xl shadow-2xl border border-white/40 dark:border-white/10 bg-white/40 dark:bg-slate-800/40 backdrop-blur-md flex items-center justify-center rotate-3 group-hover:rotate-0 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500">
+                                <i
+                                    class="fa-solid fa-broom text-5xl text-orange-600 dark:text-orange-400 drop-shadow-md group-hover:drop-shadow-xl transition-all"></i>
                             </div>
                         </div>
-                        
+
                         <div class="mt-auto relative z-20">
                             <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-white">Nettoyeur de Fichiers</h3>
-                            <p class="text-slate-600 dark:text-slate-300 text-sm line-clamp-2 leading-relaxed">Outil de nettoyage et d'organisation de fichiers avec une interface graphique intuitive, permettant de trier automatiquement les fichiers par type.</p>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm line-clamp-2 leading-relaxed">Outil de
+                                nettoyage et d'organisation de fichiers avec une interface graphique intuitive,
+                                permettant de trier automatiquement les fichiers par type.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project Card 4: Portfolio -->
-                <div class="project-card group fade-in-up relative overflow-hidden rounded-[2rem] bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-blue-500/50 col-span-1" data-category="frontend">
-                    <div class="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none">
-                        <div class="absolute top-0 right-0 w-48 h-48 bg-blue-400/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[50px] animate-blob"></div>
-                        <div class="absolute -bottom-10 -left-10 w-48 h-48 bg-indigo-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[50px] animate-blob animation-delay-2000"></div>
+                <div class="project-card group fade-in-up relative overflow-hidden rounded-[2rem] bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-blue-500/50 col-span-1"
+                    data-category="frontend">
+                    <div
+                        class="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none">
+                        <div
+                            class="absolute top-0 right-0 w-48 h-48 bg-blue-400/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[50px] animate-blob">
+                        </div>
+                        <div
+                            class="absolute -bottom-10 -left-10 w-48 h-48 bg-indigo-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[50px] animate-blob animation-delay-2000">
+                        </div>
                     </div>
-                    
+
                     <div class="relative z-10 p-8 flex flex-col h-full">
                         <div class="flex justify-between items-start absolute top-8 left-8 right-8 z-20">
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">HTML/CSS</span>
-                                <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">JavaScript</span>
+                                <span
+                                    class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">HTML/CSS</span>
+                                <span
+                                    class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">JavaScript</span>
                             </div>
                             <div class="flex gap-2">
-                                <a href="https://github.com/tarikfadlane/tarikfadlane.github.io" target="_blank" class="w-10 h-10 flex items-center justify-center bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white rounded-full hover:bg-blue-500 hover:text-white transition-all transform hover:scale-110 shadow-lg backdrop-blur-md border border-white/20 dark:border-white/5" title="View Code">
+                                <a href="https://github.com/tarikfadlane/tarikfadlane.github.io" target="_blank"
+                                    class="w-10 h-10 flex items-center justify-center bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white rounded-full hover:bg-blue-500 hover:text-white transition-all transform hover:scale-110 shadow-lg backdrop-blur-md border border-white/20 dark:border-white/5"
+                                    title="View Code">
                                     <i class="fa-brands fa-github text-lg"></i>
                                 </a>
-                                <a href="https://tarikfadlane.github.io" target="_blank" class="w-10 h-10 flex items-center justify-center bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-all transform hover:scale-110 shadow-lg backdrop-blur-md border border-white/20 dark:border-white/5" title="Live Demo">
+                                <a href="https://tarikfadlane.github.io" target="_blank"
+                                    class="w-10 h-10 flex items-center justify-center bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-all transform hover:scale-110 shadow-lg backdrop-blur-md border border-white/20 dark:border-white/5"
+                                    title="Live Demo">
                                     <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
                                 </a>
                             </div>
                         </div>
-                        
+
                         <!-- Floating Icon -->
                         <div class="relative w-full h-32 flex items-center justify-center mt-12 mb-4">
-                            <div class="w-28 h-28 rounded-3xl shadow-2xl border border-white/40 dark:border-white/10 bg-white/40 dark:bg-slate-800/40 backdrop-blur-md flex items-center justify-center -rotate-3 group-hover:rotate-0 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500">
-                                <i class="fa-solid fa-laptop-code text-5xl text-blue-600 dark:text-blue-400 drop-shadow-md group-hover:drop-shadow-xl transition-all"></i>
+                            <div
+                                class="w-28 h-28 rounded-3xl shadow-2xl border border-white/40 dark:border-white/10 bg-white/40 dark:bg-slate-800/40 backdrop-blur-md flex items-center justify-center -rotate-3 group-hover:rotate-0 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500">
+                                <i
+                                    class="fa-solid fa-laptop-code text-5xl text-blue-600 dark:text-blue-400 drop-shadow-md group-hover:drop-shadow-xl transition-all"></i>
                             </div>
                         </div>
-                        
+
                         <div class="mt-auto relative z-20">
                             <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-white">Portfolio Personnel</h3>
-                            <p class="text-slate-600 dark:text-slate-300 text-sm line-clamp-2 leading-relaxed">Mon site web portfolio personnel conçu pour mettre en valeur mes compétences, mes projets phares et mon parcours professionnel.</p>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm line-clamp-2 leading-relaxed">Mon site
+                                web portfolio personnel conçu pour mettre en valeur mes compétences, mes projets phares
+                                et mon parcours professionnel.</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Project Card 5: Pygame -->
-                <div class="project-card group fade-in-up relative overflow-hidden rounded-[2rem] bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-yellow-500/50 col-span-1" data-category="frontend" style="transition-delay: 100ms;">
-                    <div class="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none">
-                        <div class="absolute top-0 -left-10 w-48 h-48 bg-yellow-400/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[50px] animate-blob"></div>
-                        <div class="absolute -bottom-10 right-0 w-48 h-48 bg-orange-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[50px] animate-blob animation-delay-2000"></div>
+                <div class="project-card group fade-in-up relative overflow-hidden rounded-[2rem] bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-yellow-500/50 col-span-1"
+                    data-category="frontend" style="transition-delay: 100ms;">
+                    <div
+                        class="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none">
+                        <div
+                            class="absolute top-0 -left-10 w-48 h-48 bg-yellow-400/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[50px] animate-blob">
+                        </div>
+                        <div
+                            class="absolute -bottom-10 right-0 w-48 h-48 bg-orange-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[50px] animate-blob animation-delay-2000">
+                        </div>
                     </div>
-                    
+
                     <div class="relative z-10 p-8 flex flex-col h-full">
                         <div class="flex justify-between items-start absolute top-8 left-8 right-8 z-20">
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">Python</span>
-                                <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">Pygame</span>
+                                <span
+                                    class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">Python</span>
+                                <span
+                                    class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">Pygame</span>
                             </div>
-                            <a href="https://github.com/tarikfadlane/pygame" target="_blank" class="w-10 h-10 flex items-center justify-center bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white rounded-full hover:bg-yellow-500 hover:text-white transition-all transform hover:scale-110 shadow-lg backdrop-blur-md border border-white/20 dark:border-white/5" title="View Code">
+                            <a href="https://github.com/tarikfadlane/pygame" target="_blank"
+                                class="w-10 h-10 flex items-center justify-center bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white rounded-full hover:bg-yellow-500 hover:text-white transition-all transform hover:scale-110 shadow-lg backdrop-blur-md border border-white/20 dark:border-white/5"
+                                title="View Code">
                                 <i class="fa-brands fa-github text-lg"></i>
                             </a>
                         </div>
-                        
+
                         <!-- Floating Icon -->
                         <div class="relative w-full h-32 flex items-center justify-center mt-12 mb-4">
-                            <div class="w-28 h-28 rounded-3xl shadow-2xl border border-white/40 dark:border-white/10 bg-white/40 dark:bg-slate-800/40 backdrop-blur-md flex items-center justify-center rotate-3 group-hover:rotate-0 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500">
-                                <i class="fa-solid fa-gamepad text-5xl text-yellow-600 dark:text-yellow-400 drop-shadow-md group-hover:drop-shadow-xl transition-all"></i>
+                            <div
+                                class="w-28 h-28 rounded-3xl shadow-2xl border border-white/40 dark:border-white/10 bg-white/40 dark:bg-slate-800/40 backdrop-blur-md flex items-center justify-center rotate-3 group-hover:rotate-0 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500">
+                                <i
+                                    class="fa-solid fa-gamepad text-5xl text-yellow-600 dark:text-yellow-400 drop-shadow-md group-hover:drop-shadow-xl transition-all"></i>
                             </div>
                         </div>
-                        
+
                         <div class="mt-auto relative z-20">
                             <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-white">Jeu Interactif</h3>
-                            <p class="text-slate-600 dark:text-slate-300 text-sm line-clamp-2 leading-relaxed">Un jeu vidéo interactif développé en Python utilisant la bibliothèque Pygame, démontrant la logique de jeu et la gestion des événements.</p>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm line-clamp-2 leading-relaxed">Un jeu
+                                vidéo interactif développé en Python utilisant la bibliothèque Pygame, démontrant la
+                                logique de jeu et la gestion des événements.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project Card 6: Calculatrice -->
-                <div class="project-card group fade-in-up relative overflow-hidden rounded-[2rem] bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-cyan-500/50 md:col-span-2 lg:col-span-2" data-category="frontend" style="transition-delay: 200ms;">
-                    <div class="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none">
-                        <div class="absolute top-1/2 left-1/4 w-72 h-72 bg-cyan-400/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[80px] animate-blob"></div>
-                        <div class="absolute bottom-0 right-1/4 w-72 h-72 bg-blue-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[80px] animate-blob animation-delay-2000"></div>
+                <div class="project-card group fade-in-up relative overflow-hidden rounded-[2rem] bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-cyan-500/50 md:col-span-2 lg:col-span-2"
+                    data-category="frontend" style="transition-delay: 200ms;">
+                    <div
+                        class="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none">
+                        <div
+                            class="absolute top-1/2 left-1/4 w-72 h-72 bg-cyan-400/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[80px] animate-blob">
+                        </div>
+                        <div
+                            class="absolute bottom-0 right-1/4 w-72 h-72 bg-blue-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[80px] animate-blob animation-delay-2000">
+                        </div>
                     </div>
-                    
+
                     <div class="relative z-10 p-8 flex flex-col md:flex-row-reverse h-full gap-8 items-center">
                         <!-- Left (actually Right due to row-reverse): Content -->
                         <div class="flex flex-col h-full w-full md:w-1/2">
                             <div class="flex justify-between items-start mb-auto">
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">HTML/CSS</span>
-                                    <span class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">JavaScript</span>
+                                    <span
+                                        class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">HTML/CSS</span>
+                                    <span
+                                        class="px-3 py-1 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-full border border-white/20 dark:border-white/5 backdrop-blur-md">JavaScript</span>
                                 </div>
-                                <a href="https://github.com/tarikfadlane/calculatrice" target="_blank" class="w-12 h-12 flex items-center justify-center bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white rounded-full hover:bg-cyan-500 hover:text-white transition-all transform hover:scale-110 shadow-lg backdrop-blur-md border border-white/20 dark:border-white/5" title="View Code">
+                                <a href="https://github.com/tarikfadlane/calculatrice" target="_blank"
+                                    class="w-12 h-12 flex items-center justify-center bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white rounded-full hover:bg-cyan-500 hover:text-white transition-all transform hover:scale-110 shadow-lg backdrop-blur-md border border-white/20 dark:border-white/5"
+                                    title="View Code">
                                     <i class="fa-brands fa-github text-xl"></i>
                                 </a>
                             </div>
-                            
+
                             <div class="mt-8 relative">
-                                <h3 class="text-2xl md:text-3xl font-bold mb-3 text-slate-800 dark:text-white">Calculatrice Web</h3>
-                                <p class="text-slate-600 dark:text-slate-300 text-sm md:text-base line-clamp-3 leading-relaxed">Une calculatrice web fonctionnelle et esthétique, permettant d'effectuer des opérations mathématiques de base avec une interface utilisateur intuitive.</p>
+                                <h3 class="text-2xl md:text-3xl font-bold mb-3 text-slate-800 dark:text-white">
+                                    Calculatrice Web</h3>
+                                <p
+                                    class="text-slate-600 dark:text-slate-300 text-sm md:text-base line-clamp-3 leading-relaxed">
+                                    Une calculatrice web fonctionnelle et esthétique, permettant d'effectuer des
+                                    opérations mathématiques de base avec une interface utilisateur intuitive.</p>
                             </div>
                         </div>
-                        
+
                         <!-- Right (actually Left): Floating Icon -->
-                        <div class="w-full md:w-1/2 relative h-48 md:h-full flex items-center justify-center mt-6 md:mt-0">
-                            <div class="w-32 h-32 md:w-40 md:h-40 rounded-3xl shadow-2xl border border-white/40 dark:border-white/10 bg-white/40 dark:bg-slate-800/40 backdrop-blur-md flex items-center justify-center -rotate-3 group-hover:rotate-0 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500">
-                                <i class="fa-solid fa-calculator text-6xl md:text-7xl text-cyan-600 dark:text-cyan-400 drop-shadow-md group-hover:drop-shadow-xl transition-all"></i>
+                        <div
+                            class="w-full md:w-1/2 relative h-48 md:h-full flex items-center justify-center mt-6 md:mt-0">
+                            <div
+                                class="w-32 h-32 md:w-40 md:h-40 rounded-3xl shadow-2xl border border-white/40 dark:border-white/10 bg-white/40 dark:bg-slate-800/40 backdrop-blur-md flex items-center justify-center -rotate-3 group-hover:rotate-0 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500">
+                                <i
+                                    class="fa-solid fa-calculator text-6xl md:text-7xl text-cyan-600 dark:text-cyan-400 drop-shadow-md group-hover:drop-shadow-xl transition-all"></i>
                             </div>
                         </div>
                     </div>
-                </div>            </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -587,58 +749,77 @@
             <div class="text-center mb-16 section-heading fade-in-up">
                 <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Mon Parcours</h2>
                 <div class="w-20 h-1.5 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
-                <p class="mt-5 text-slate-600 dark:text-slate-400 text-lg">Formation académique et étapes professionnelles.</p>
+                <p class="mt-5 text-slate-600 dark:text-slate-400 text-lg">Formation académique et étapes
+                    professionnelles.</p>
             </div>
 
             <div class="relative border-l-2 border-primary/30 ml-4 md:ml-6 fade-in-up">
-                
+
                 <!-- Timeline Item 1 -->
                 <div class="mb-12 relative pl-8 md:pl-10 group">
-                    <div class="absolute w-5 h-5 bg-primary rounded-full -left-2.5 top-1.5 border-4 border-slate-50 dark:border-slate-900 group-hover:scale-125 transition-transform"></div>
-                    
+                    <div
+                        class="absolute w-5 h-5 bg-primary rounded-full -left-2.5 top-1.5 border-4 border-slate-50 dark:border-slate-900 group-hover:scale-125 transition-transform">
+                    </div>
+
                     <div class="flex flex-col md:flex-row md:items-start gap-2 md:gap-8">
                         <div class="md:w-1/4 shrink-0">
                             <span class="text-primary font-bold text-xl block">Présent</span>
                             <span class="text-sm text-slate-500 font-medium">2025 - Présent</span>
                         </div>
-                        <div class="md:w-3/4 bg-white dark:bg-dark-card p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-dark-border group-hover:shadow-lg transition-shadow mt-4 md:mt-0">
-                            <h3 class="text-xl md:text-2xl font-bold mb-1 text-slate-800 dark:text-white">Développement Digital</h3>
+                        <div
+                            class="md:w-3/4 bg-white dark:bg-dark-card p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-dark-border group-hover:shadow-lg transition-shadow mt-4 md:mt-0">
+                            <h3 class="text-xl md:text-2xl font-bold mb-1 text-slate-800 dark:text-white">Développement
+                                Digital</h3>
                             <h4 class="text-secondary dark:text-secondary mb-4 font-semibold">OFPPT</h4>
-                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed font-light">Formation approfondie en développement logiciel, architecture web, bases de données et méthodologies agiles.</p>
+                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed font-light">Formation
+                                approfondie en développement logiciel, architecture web, bases de données et
+                                méthodologies agiles.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Timeline Item 2 -->
                 <div class="mb-12 relative pl-8 md:pl-10 group">
-                    <div class="absolute w-5 h-5 bg-primary rounded-full -left-2.5 top-1.5 border-4 border-slate-50 dark:border-slate-900 group-hover:scale-125 transition-transform"></div>
-                    
+                    <div
+                        class="absolute w-5 h-5 bg-primary rounded-full -left-2.5 top-1.5 border-4 border-slate-50 dark:border-slate-900 group-hover:scale-125 transition-transform">
+                    </div>
+
                     <div class="flex flex-col md:flex-row md:items-start gap-2 md:gap-8">
                         <div class="md:w-1/4 shrink-0">
                             <span class="text-primary font-bold text-xl block">2025</span>
                             <span class="text-sm text-slate-500 font-medium">2023 - 2025</span>
                         </div>
-                        <div class="md:w-3/4 bg-white dark:bg-dark-card p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-dark-border group-hover:shadow-lg transition-shadow mt-4 md:mt-0">
-                            <h3 class="text-xl md:text-2xl font-bold mb-1 text-slate-800 dark:text-white">DEUG en Bio-Analyses Médicales</h3>
-                            <h4 class="text-secondary dark:text-secondary mb-4 font-semibold">Faculté des Sciences Ain Chock</h4>
-                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed font-light">Parcours scientifique universitaire axé sur la rigueur, l'analyse de données et la méthodologie scientifique.</p>
+                        <div
+                            class="md:w-3/4 bg-white dark:bg-dark-card p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-dark-border group-hover:shadow-lg transition-shadow mt-4 md:mt-0">
+                            <h3 class="text-xl md:text-2xl font-bold mb-1 text-slate-800 dark:text-white">DEUG en
+                                Bio-Analyses Médicales</h3>
+                            <h4 class="text-secondary dark:text-secondary mb-4 font-semibold">Faculté des Sciences Ain
+                                Chock</h4>
+                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed font-light">Parcours
+                                scientifique universitaire axé sur la rigueur, l'analyse de données et la méthodologie
+                                scientifique.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Timeline Item 3 -->
                 <div class="mb-0 relative pl-8 md:pl-10 group">
-                    <div class="absolute w-5 h-5 bg-primary rounded-full -left-2.5 top-1.5 border-4 border-slate-50 dark:border-slate-900 group-hover:scale-125 transition-transform"></div>
-                    
+                    <div
+                        class="absolute w-5 h-5 bg-primary rounded-full -left-2.5 top-1.5 border-4 border-slate-50 dark:border-slate-900 group-hover:scale-125 transition-transform">
+                    </div>
+
                     <div class="flex flex-col md:flex-row md:items-start gap-2 md:gap-8">
                         <div class="md:w-1/4 shrink-0">
                             <span class="text-primary font-bold text-xl block">2023</span>
                             <span class="text-sm text-slate-500 font-medium">2023</span>
                         </div>
-                        <div class="md:w-3/4 bg-white dark:bg-dark-card p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-dark-border group-hover:shadow-lg transition-shadow mt-4 md:mt-0">
-                            <h3 class="text-xl md:text-2xl font-bold mb-1 text-slate-800 dark:text-white">Baccalauréat Sciences Physiques</h3>
+                        <div
+                            class="md:w-3/4 bg-white dark:bg-dark-card p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-dark-border group-hover:shadow-lg transition-shadow mt-4 md:mt-0">
+                            <h3 class="text-xl md:text-2xl font-bold mb-1 text-slate-800 dark:text-white">Baccalauréat
+                                Sciences Physiques</h3>
                             <h4 class="text-secondary dark:text-secondary mb-4 font-semibold">Lycée Mohamed VI</h4>
-                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed font-light">Obtention avec Mention Bien.</p>
+                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed font-light">Obtention avec
+                                Mention Bien.</p>
                         </div>
                     </div>
                 </div>
@@ -653,15 +834,19 @@
             <div class="text-center mb-16 section-heading fade-in-up">
                 <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Contactez-moi</h2>
                 <div class="w-20 h-1.5 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
-                <p class="mt-5 text-slate-600 dark:text-slate-400 text-lg">Vous avez un projet en tête ou souhaitez discuter ? Écrivons-nous.</p>
+                <p class="mt-5 text-slate-600 dark:text-slate-400 text-lg">Vous avez un projet en tête ou souhaitez
+                    discuter ? Écrivons-nous.</p>
             </div>
 
-            <div class="max-w-5xl mx-auto bg-slate-50 dark:bg-slate-900/80 rounded-3xl shadow-xl overflow-hidden border border-slate-200 dark:border-dark-border fade-in-up p-8 md:p-12">
+            <div
+                class="max-w-5xl mx-auto bg-slate-50 dark:bg-slate-900/80 rounded-3xl shadow-xl overflow-hidden border border-slate-200 dark:border-dark-border fade-in-up p-8 md:p-12">
 
-                
+
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <a href="https://github.com/tarikfadlane" target="_blank" class="connect-link group !flex-col text-center py-8">
-                        <div class="w-16 h-16 mb-2 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center shadow-sm group-hover:bg-slate-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-slate-900 transition-colors">
+                    <a href="https://github.com/tarikfadlane" target="_blank"
+                        class="connect-link group !flex-col text-center py-8">
+                        <div
+                            class="w-16 h-16 mb-2 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center shadow-sm group-hover:bg-slate-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-slate-900 transition-colors">
                             <i class="fa-brands fa-github text-3xl"></i>
                         </div>
                         <div>
@@ -669,9 +854,11 @@
                             <p class="text-sm text-slate-500 mt-1">@tarikfadlane</p>
                         </div>
                     </a>
-                    
-                    <a href="https://www.linkedin.com/in/tarikfadlane/" target="_blank" class="connect-link group !flex-col text-center py-8">
-                        <div class="w-16 h-16 mb-2 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center shadow-sm group-hover:bg-[#0A66C2] group-hover:text-white transition-colors">
+
+                    <a href="https://www.linkedin.com/in/tarikfadlane/" target="_blank"
+                        class="connect-link group !flex-col text-center py-8">
+                        <div
+                            class="w-16 h-16 mb-2 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center shadow-sm group-hover:bg-[#0A66C2] group-hover:text-white transition-colors">
                             <i class="fa-brands fa-linkedin-in text-3xl"></i>
                         </div>
                         <div>
@@ -679,9 +866,10 @@
                             <p class="text-sm text-slate-500 mt-1">in/tarikfadlane</p>
                         </div>
                     </a>
-                    
+
                     <a href="mailto:tarikfadlane.mj@gmail.com" class="connect-link group !flex-col text-center py-8">
-                        <div class="w-16 h-16 mb-2 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center shadow-sm group-hover:bg-primary group-hover:text-white transition-colors">
+                        <div
+                            class="w-16 h-16 mb-2 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center shadow-sm group-hover:bg-primary group-hover:text-white transition-colors">
                             <i class="fa-solid fa-envelope text-3xl"></i>
                         </div>
                         <div>
@@ -698,15 +886,22 @@
     <footer class="py-10 text-center border-t border-slate-200 dark:border-dark-border bg-white dark:bg-dark-bg">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-center items-center space-x-8 mb-6 md:hidden">
-                <a href="https://github.com/tarikfadlane" target="_blank" class="text-slate-500 hover:text-primary transition-colors"><i class="fa-brands fa-github text-2xl"></i></a>
-                <a href="https://www.linkedin.com/in/tarikfadlane/" target="_blank" class="text-slate-500 hover:text-primary transition-colors"><i class="fa-brands fa-linkedin text-2xl"></i></a>
-                <a href="mailto:tarikfadlane.mj@gmail.com" class="text-slate-500 hover:text-primary transition-colors"><i class="fa-solid fa-envelope text-2xl"></i></a>
+                <a href="https://github.com/tarikfadlane" target="_blank"
+                    class="text-slate-500 hover:text-primary transition-colors"><i
+                        class="fa-brands fa-github text-2xl"></i></a>
+                <a href="https://www.linkedin.com/in/tarikfadlane/" target="_blank"
+                    class="text-slate-500 hover:text-primary transition-colors"><i
+                        class="fa-brands fa-linkedin text-2xl"></i></a>
+                <a href="mailto:tarikfadlane.mj@gmail.com"
+                    class="text-slate-500 hover:text-primary transition-colors"><i
+                        class="fa-solid fa-envelope text-2xl"></i></a>
             </div>
             <p class="text-slate-600 dark:text-slate-400 font-medium">
                 &copy; <span id="current-year"></span> Tarik Fadlane. Tous droits réservés.
             </p>
             <p class="text-slate-400 dark:text-slate-500 text-sm mt-3 font-light">
-                Conçu & Développé avec <i class="fa-solid fa-heart text-red-500 mx-1"></i> en utilisant HTML, Tailwind CSS et Vanilla JS.
+                Conçu & Développé avec <i class="fa-solid fa-heart text-red-500 mx-1"></i> en utilisant HTML, Tailwind
+                CSS et Vanilla JS.
             </p>
         </div>
     </footer>
@@ -714,4 +909,5 @@
     <!-- Scripts -->
     <script src="script.js"></script>
 </body>
+
 </html>
